@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dosha Balance - Quiz</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:#F8F5EE;
+  color:#2E473B;
+  text-align:center;
+  min-height:100vh;
+}
+
+.container{
+  padding:30px 20px;
+  max-width:650px;
+  margin:auto;
+}
+
+h1{
+  color:#5D8A63;
+  margin-bottom:25px;
+}
+
+#quiz{
+  background:white;
+  padding:25px 20px;
+  border-radius:25px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.question-number{
+  color:#777;
+  font-size:15px;
+  margin-bottom:15px;
+}
+
+.question-text{
+  font-size:22px;
+  line-height:1.7;
+  margin-bottom:25px;
+}
+
+.answer{
+  display:block;
+  width:90%;
+  margin:12px auto;
+  padding:16px;
+  border:none;
+  border-radius:30px;
+  font-size:18px;
+  background:#5D8A63;
+  color:white;
+  cursor:pointer;
+}
+
+.answer:hover{
+  background:#4A7050;
+}
+
+.progress{
+  width:90%;
+  height:10px;
+  background:#E5E1D8;
+  border-radius:20px;
+  margin:20px auto 25px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:#5D8A63;
+  border-radius:20px;
+  transition:.3s;
+}
+
+#result{
+  display:none;
+  background:white;
+  padding:30px 20px;
+  margin-top:25px;
+  border-radius:25px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  line-height:1.9;
+}
+
+.restart{
+  display:block;
+  width:80%;
+  margin:25px auto 0;
+  padding:15px;
+  border:none;
+  border-radius:30px;
+  font-size:18px;
+  background:#5D8A63;
+  color:white;
+  cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌿 Dosha Balance</h1>
+
+<div id="quiz">
+
+  <div class="question-number" id="questionNumber"></div>
+
+  <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div class="question-text" id="questionText"></div>
+
+  <div id="answers"></div>
+
+</div>
+
+<div id="result"></div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
