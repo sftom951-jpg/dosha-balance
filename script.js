@@ -177,7 +177,7 @@ function showQuestion() {
   });
 
   const progress =
-    (currentQuestion / questions.length) * 100;
+    ((currentQuestion + 1) / questions.length) * 100;
 
   document.getElementById("progressBar").style.width =
     progress + "%";
@@ -246,332 +246,436 @@ function showResult() {
   }
 
 
-  let title = "";
-  let description = "";
-  let food = "";
-  let foodList = "";
-  let yoga = "";
-  let yogaRoutine = "";
-  let breathing = "";
-  let tips = "";
-  let icon = "";
+  let data = {};
 
 
   if (dominant === "vata") {
 
-    icon = "🌬️";
+    data = {
 
-    title = "دوشا فاتا";
+      icon: "🌬️",
 
-    description =
-      "تميل شخصيتك إلى الحيوية والإبداع وسرعة التفكير والمرونة.";
+      title: "دوشا فاتا",
 
-    food =
-      "يفضل في نمط الأيورفيدا اختيار الأطعمة الدافئة والمطبوخة والوجبات المنتظمة.";
+      subtitle: "طاقة الحركة والإبداع",
 
-    foodList = `
-      <ul style="line-height:2;text-align:right;">
-        <li>🍚 الأرز والحبوب المطبوخة</li>
-        <li>🥣 الشوربات الدافئة</li>
-        <li>🥕 الخضار المطبوخة</li>
-        <li>🍌 الفواكه الناضجة</li>
-        <li>🥜 المكسرات بكميات معتدلة</li>
-      </ul>
-    `;
+      description:
+        "تميل شخصيتك إلى الحيوية والإبداع وسرعة التفكير والمرونة.",
 
-    yoga =
-      "روتين هادئ وبطيء يركز على الثبات والاسترخاء.";
+      foodIntro:
+        "اختاري في هذا النمط أطعمة دافئة ومطبوخة ووجبات منتظمة.",
 
-    yogaRoutine = `
-      <ul style="line-height:2;text-align:right;">
-        <li>🧘‍♀️ وضعية الطفل — دقيقتان</li>
-        <li>🐈 القطة والبقرة — دقيقة واحدة</li>
-        <li>🌿 وضعية الجسر اللطيفة — دقيقة واحدة</li>
-        <li>🧘‍♀️ جلوس هادئ وتمدد لطيف — 3 دقائق</li>
-        <li>😌 استرخاء نهائي — 3 دقائق</li>
-      </ul>
-    `;
+      foods: [
+        "🍚 الأرز والحبوب المطبوخة",
+        "🥣 الشوربات الدافئة",
+        "🥕 الخضار المطبوخة",
+        "🍌 الفواكه الناضجة",
+        "🥜 المكسرات بكميات معتدلة"
+      ],
 
-    breathing =
-      "تنفس بطيء وهادئ لمدة دقيقتين، مع التركيز على إطالة الزفير.";
+      yogaIntro:
+        "روتين هادئ وبطيء يساعد على الاسترخاء والثبات.",
 
-    tips =
-      "حاولي الحفاظ على روتين يومي منتظم، وامنحي نفسك وقتًا كافيًا للراحة والهدوء.";
+      yoga: [
+        "🧘‍♀️ وضعية الطفل — دقيقتان",
+        "🐈 القطة والبقرة — دقيقة",
+        "🌿 وضعية الجسر اللطيفة — دقيقة",
+        "🧘‍♀️ تمدد هادئ — 3 دقائق",
+        "😌 استرخاء نهائي — 3 دقائق"
+      ],
+
+      breathing:
+        "تنفس ببطء لمدة دقيقتين مع جعل الزفير أطول قليلًا من الشهيق.",
+
+      routine:
+        "ابدئي يومك بهدوء، حافظي على مواعيد منتظمة للطعام والنوم، وخذي فترات راحة قصيرة خلال اليوم.",
+
+      tips:
+        "الروتين والهدوء والاسترخاء من الأشياء التي قد تساعدك على الشعور بالتوازن."
+
+    };
+
+
+  } else if (dominant === "pitta") {
+
+    data = {
+
+      icon: "🔥",
+
+      title: "دوشا بيتا",
+
+      subtitle: "طاقة التركيز والإنجاز",
+
+      description:
+        "تميل شخصيتك إلى التركيز والطموح والتنظيم وحب الإنجاز.",
+
+      foodIntro:
+        "اختاري أطعمة خفيفة ومتنوعة ومتوازنة، مع الاهتمام بالترطيب.",
+
+      foods: [
+        "🥒 الخيار والخضار الطازجة",
+        "🥬 الخضار الورقية",
+        "🍉 الفواكه الغنية بالماء",
+        "🍚 الأرز والحبوب الخفيفة",
+        "💧 الماء والسوائل المناسبة"
+      ],
+
+      yogaIntro:
+        "روتين متوسط الهدوء يركز على التمدد والتنفس والاسترخاء.",
+
+      yoga: [
+        "🌿 تمدد جانبي لطيف — دقيقة",
+        "🐈 القطة والبقرة — دقيقة",
+        "🧘‍♀️ وضعية الطفل — دقيقتان",
+        "🌸 وضعية الفراشة — دقيقتان",
+        "😌 استرخاء وتنفس — 4 دقائق"
+      ],
+
+      breathing:
+        "تنفس هادئ ومنتظم لمدة دقيقتين مع التركيز على تخفيف التوتر.",
+
+      routine:
+        "قسّمي يومك بين الإنجاز والراحة، واحرصي على شرب الماء وأخذ فترات توقف قصيرة.",
+
+      tips:
+        "التوازن بين الإنجاز والراحة مهم حتى لا يتحول الحماس إلى إجهاد."
+
+    };
+
+
+  } else {
+
+    data = {
+
+      icon: "🌱",
+
+      title: "دوشا كافا",
+
+      subtitle: "طاقة الهدوء والثبات",
+
+      description:
+        "تميل شخصيتك إلى الهدوء والصبر والاستقرار والثبات.",
+
+      foodIntro:
+        "اختاري وجبات متنوعة وخفيفة مع الاهتمام بالحركة وتجنب الإفراط في الطعام.",
+
+      foods: [
+        "🥦 الخضار المتنوعة",
+        "🥗 السلطات الطازجة",
+        "🫘 البقوليات",
+        "🍎 الفواكه الطازجة",
+        "🌾 الحبوب الكاملة بكميات مناسبة"
+      ],
+
+      yogaIntro:
+        "روتين أكثر نشاطًا وحيوية يساعد على تنشيط الجسم.",
+
+      yoga: [
+        "🐈 القطة والبقرة — دقيقة",
+        "🌞 تحية الشمس — 3 دقائق",
+        "🧘‍♀️ وضعية المحارب — دقيقتان",
+        "🌿 تمدد نشط — دقيقتان",
+        "😌 تنفس واسترخاء — دقيقتان"
+      ],
+
+      breathing:
+        "تنفس منتظم ونشط لمدة دقيقتين مع الحفاظ على وتيرة مريحة.",
+
+      routine:
+        "أضيفي الحركة إلى يومك، وحاولي تغيير الروتين من وقت لآخر، وابدئي اليوم بنشاط بسيط.",
+
+      tips:
+        "الحركة والتنوع والروتين النشط يمكن أن يساعدوا على الحفاظ على الشعور بالحيوية."
+
+    };
 
   }
 
 
-  else if (dominant === "pitta") {
+  const foodHTML = data.foods.map(function(food) {
 
-    icon = "🔥";
-
-    title = "دوشا بيتا";
-
-    description =
-      "تميل شخصيتك إلى التركيز والطموح والتنظيم وحب الإنجاز.";
-
-    food =
-      "يفضل في نمط الأيورفيدا اختيار أطعمة خفيفة ومتنوعة ومتوازنة مع الاهتمام بالترطيب.";
-
-    foodList = `
-      <ul style="line-height:2;text-align:right;">
-        <li>🥒 الخيار والخضار الطازجة</li>
-        <li>🥬 الخضار الورقية</li>
-        <li>🍉 الفواكه الغنية بالماء</li>
-        <li>🍚 الأرز والحبوب الخفيفة</li>
-        <li>💧 الماء والسوائل المناسبة</li>
-      </ul>
+    return `
+      <div style="
+        background:white;
+        padding:12px 15px;
+        border-radius:15px;
+        margin:8px 0;
+        text-align:right;
+        box-shadow:0 2px 8px rgba(0,0,0,.04);
+      ">
+        ${food}
+      </div>
     `;
 
-    yoga =
-      "روتين متوسط الهدوء يركز على التمدد والتنفس والاسترخاء.";
+  }).join("");
 
-    yogaRoutine = `
-      <ul style="line-height:2;text-align:right;">
-        <li>🌿 تمدد جانبي لطيف — دقيقة واحدة</li>
-        <li>🐈 القطة والبقرة — دقيقة واحدة</li>
-        <li>🧘‍♀️ وضعية الطفل — دقيقتان</li>
-        <li>🌸 وضعية الفراشة — دقيقتان</li>
-        <li>😌 استرخاء وتنفس هادئ — 4 دقائق</li>
-      </ul>
+
+  const yogaHTML = data.yoga.map(function(move) {
+
+    return `
+      <div style="
+        background:white;
+        padding:12px 15px;
+        border-radius:15px;
+        margin:8px 0;
+        text-align:right;
+        box-shadow:0 2px 8px rgba(0,0,0,.04);
+      ">
+        ${move}
+      </div>
     `;
 
-    breathing =
-      "تنفس هادئ لمدة دقيقتين مع التركيز على التنفس المنتظم وتخفيف التوتر.";
-
-    tips =
-      "احرصي على فترات راحة منتظمة، وتجنبي المبالغة في العمل والإنجاز.";
-
-  }
-
-
-  else {
-
-    icon = "🌱";
-
-    title = "دوشا كافا";
-
-    description =
-      "تميل شخصيتك إلى الهدوء والصبر والاستقرار والثبات.";
-
-    food =
-      "يفضل في نمط الأيورفيدا اختيار وجبات خفيفة ومتنوعة مع الاهتمام بالحركة وتجنب الإفراط في الطعام.";
-
-    foodList = `
-      <ul style="line-height:2;text-align:right;">
-        <li>🥦 الخضار المتنوعة</li>
-        <li>🥗 السلطات الطازجة</li>
-        <li>🫘 البقوليات</li>
-        <li>🍎 الفواكه الطازجة</li>
-        <li>🌾 الحبوب الكاملة بكميات مناسبة</li>
-      </ul>
-    `;
-
-    yoga =
-      "روتين أكثر نشاطًا وحيوية للمساعدة على تنشيط الجسم.";
-
-    yogaRoutine = `
-      <ul style="line-height:2;text-align:right;">
-        <li>🐈 القطة والبقرة — دقيقة واحدة</li>
-        <li>🌞 تحية الشمس — 3 دقائق</li>
-        <li>🧘‍♀️ وضعية المحارب — دقيقتان</li>
-        <li>🌿 تمدد نشط — دقيقتان</li>
-        <li>😌 تنفس واسترخاء — دقيقتان</li>
-      </ul>
-    `;
-
-    breathing =
-      "تنفس نشط ومنتظم لمدة دقيقتين مع الحفاظ على وتيرة مريحة.";
-
-    tips =
-      "حافظي على الحركة اليومية والتغيير في الروتين لتجنب الخمول.";
-
-  }
+  }).join("");
 
 
   result.innerHTML = `
 
     <div style="
-      font-size:52px;
-      margin-bottom:5px;
-    ">
-      ${icon}
-    </div>
-
-    <h2 style="
-      color:#2E473B;
-      font-size:30px;
-      margin:5px 0 10px;
-    ">
-      ${title}
-    </h2>
-
-    <p style="
-      color:#777;
-      margin-bottom:25px;
-    ">
-      النتيجة مبنية على إجاباتك في هذا الاختبار
-    </p>
-
-
-    <div style="
-      background:#F8F5EE;
-      padding:20px;
-      border-radius:20px;
-      margin-bottom:25px;
+      max-width:600px;
+      margin:auto;
     ">
 
-      <h3 style="margin-top:0;">
-        🌿 توزيع النتيجة
+      <div style="
+        font-size:58px;
+        margin-bottom:5px;
+      ">
+        ${data.icon}
+      </div>
+
+
+      <h2 style="
+        color:#2E473B;
+        font-size:30px;
+        margin:5px 0;
+      ">
+        ${data.title}
+      </h2>
+
+
+      <h3 style="
+        color:#5D8A63;
+        margin-top:5px;
+      ">
+        ${data.subtitle}
       </h3>
 
-      <p>🌬️ فاتا: ${vataPercent}%</p>
+
+      <p style="
+        color:#777;
+        margin-bottom:25px;
+      ">
+        نتيجتك مبنية على إجاباتك في الاختبار
+      </p>
+
 
       <div style="
-        background:#E5E1D8;
-        height:8px;
-        border-radius:20px;
-        overflow:hidden;
+        background:#F8F5EE;
+        padding:20px;
+        border-radius:22px;
+        margin-bottom:20px;
       ">
+
+        <h3>📊 توزيع النتيجة</h3>
+
+        <p>🌬️ فاتا: ${vataPercent}%</p>
+
         <div style="
-          width:${vataPercent}%;
-          height:100%;
-          background:#8BAE8E;
-        "></div>
+          background:#E5E1D8;
+          height:9px;
+          border-radius:20px;
+          overflow:hidden;
+        ">
+          <div style="
+            width:${vataPercent}%;
+            height:100%;
+            background:#8BAE8E;
+          "></div>
+        </div>
+
+
+        <p>🔥 بيتا: ${pittaPercent}%</p>
+
+        <div style="
+          background:#E5E1D8;
+          height:9px;
+          border-radius:20px;
+          overflow:hidden;
+        ">
+          <div style="
+            width:${pittaPercent}%;
+            height:100%;
+            background:#C98A68;
+          "></div>
+        </div>
+
+
+        <p>🌱 كافا: ${kaphaPercent}%</p>
+
+        <div style="
+          background:#E5E1D8;
+          height:9px;
+          border-radius:20px;
+          overflow:hidden;
+        ">
+          <div style="
+            width:${kaphaPercent}%;
+            height:100%;
+            background:#7A9A78;
+          "></div>
+        </div>
+
       </div>
 
 
-      <p>🔥 بيتا: ${pittaPercent}%</p>
-
       <div style="
-        background:#E5E1D8;
-        height:8px;
-        border-radius:20px;
-        overflow:hidden;
+        background:white;
+        padding:22px;
+        border-radius:22px;
+        margin-bottom:20px;
+        border:1px solid #eee;
       ">
-        <div style="
-          width:${pittaPercent}%;
-          height:100%;
-          background:#C98A68;
-        "></div>
+
+        <h3>✨ ماذا تعني نتيجتك؟</h3>
+
+        <p>
+          ${data.description}
+        </p>
+
       </div>
 
 
-      <p>🌱 كافا: ${kaphaPercent}%</p>
-
       <div style="
-        background:#E5E1D8;
-        height:8px;
-        border-radius:20px;
-        overflow:hidden;
+        background:#F8F5EE;
+        padding:22px;
+        border-radius:22px;
+        margin-bottom:20px;
+        text-align:right;
       ">
-        <div style="
-          width:${kaphaPercent}%;
-          height:100%;
-          background:#7A9A78;
-        "></div>
+
+        <h3 style="text-align:center;">
+          🥗 الأكل المناسب
+        </h3>
+
+        <p style="text-align:center;">
+          ${data.foodIntro}
+        </p>
+
+        ${foodHTML}
+
       </div>
 
+
+      <div style="
+        background:#F8F5EE;
+        padding:22px;
+        border-radius:22px;
+        margin-bottom:20px;
+        text-align:right;
+      ">
+
+        <h3 style="text-align:center;">
+          🧘‍♀️ روتين اليوغا
+        </h3>
+
+        <p style="text-align:center;">
+          ${data.yogaIntro}
+        </p>
+
+        ${yogaHTML}
+
+        <p style="
+          text-align:center;
+          color:#5D8A63;
+          font-weight:bold;
+          margin-top:18px;
+        ">
+          ⏱️ مدة الروتين حوالي 10 دقائق
+        </p>
+
+      </div>
+
+
+      <div style="
+        background:#F8F5EE;
+        padding:22px;
+        border-radius:22px;
+        margin-bottom:20px;
+      ">
+
+        <h3>
+          🌬️ تمرين التنفس
+        </h3>
+
+        <p>
+          ${data.breathing}
+        </p>
+
+      </div>
+
+
+      <div style="
+        background:#F8F5EE;
+        padding:22px;
+        border-radius:22px;
+        margin-bottom:20px;
+      ">
+
+        <h3>
+          🌿 روتينك اليومي
+        </h3>
+
+        <p>
+          ${data.routine}
+        </p>
+
+      </div>
+
+
+      <div style="
+        background:#F8F5EE;
+        padding:22px;
+        border-radius:22px;
+        margin-bottom:20px;
+      ">
+
+        <h3>
+          💚 نصيحة لك
+        </h3>
+
+        <p>
+          ${data.tips}
+        </p>
+
+      </div>
+
+
+      <div style="
+        background:#FFF8E8;
+        padding:15px;
+        border-radius:18px;
+        margin-top:20px;
+        font-size:13px;
+        color:#777;
+        line-height:1.8;
+      ">
+
+        🌿 هذا الاختبار للتثقيف والاستكشاف العام
+        وليس تشخيصًا أو علاجًا طبيًا.
+
+      </div>
+
+
+      <button
+        class="restart"
+        onclick="location.reload()"
+        style="
+          margin-top:25px;
+        "
+      >
+        ✨ إعادة الاختبار
+      </button>
+
     </div>
-
-
-    <h3>✨ ماذا تعني نتيجتك؟</h3>
-
-    <p>
-      ${description}
-    </p>
-
-
-    <div style="
-      background:#F8F5EE;
-      padding:20px;
-      border-radius:20px;
-      margin-top:20px;
-    ">
-
-      <h3>🥗 الأكل المناسب</h3>
-
-      <p>
-        ${food}
-      </p>
-
-      ${foodList}
-
-    </div>
-
-
-    <div style="
-      background:#F8F5EE;
-      padding:20px;
-      border-radius:20px;
-      margin-top:20px;
-    ">
-
-      <h3>🧘‍♀️ روتين اليوغا</h3>
-
-      <p>
-        ${yoga}
-      </p>
-
-      ${yogaRoutine}
-
-      <p>
-        <strong>⏱️ مدة الروتين: حوالي 10 دقائق</strong>
-      </p>
-
-    </div>
-
-
-    <div style="
-      background:#F8F5EE;
-      padding:20px;
-      border-radius:20px;
-      margin-top:20px;
-    ">
-
-      <h3>🌬️ تمرين التنفس</h3>
-
-      <p>
-        ${breathing}
-      </p>
-
-    </div>
-
-
-    <div style="
-      background:#F8F5EE;
-      padding:20px;
-      border-radius:20px;
-      margin-top:20px;
-    ">
-
-      <h3>🌿 نصيحة يومية</h3>
-
-      <p>
-        ${tips}
-      </p>
-
-    </div>
-
-
-    <p style="
-      font-size:13px;
-      color:#888;
-      margin-top:25px;
-      line-height:1.8;
-    ">
-      ملاحظة: المحتوى مستوحى من مفاهيم الأيورفيدا
-      ومخصص للتثقيف والاستكشاف العام، ولا يُعد تشخيصًا
-      أو علاجًا طبيًا.
-    </p>
-
-
-    <button
-      class="restart"
-      onclick="location.reload()"
-    >
-      ✨ إعادة الاختبار
-    </button>
 
   `;
 
