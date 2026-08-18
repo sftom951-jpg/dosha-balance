@@ -1,145 +1,291 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+const questions = [
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {
+    q: "كيف تصفين حجم جسمك؟",
+    options: [
+      ["نحيف", "vata"],
+      ["متوسط", "pitta"],
+      ["كبير", "kapha"]
+    ]
+  },
 
-<title>Dosha Balance - Quiz</title>
+  {
+    q: "كيف تصفين وزن جسمك؟",
+    options: [
+      ["منخفض", "vata"],
+      ["متوسط", "pitta"],
+      ["زائد الوزن", "kapha"]
+    ]
+  },
 
-<style>
+  {
+    q: "كيف تصفين ذقنك؟",
+    options: [
+      ["نحيل، زاوي، مدبب", "vata"],
+      ["متوسط، مستدير", "pitta"],
+      ["مزدوج، ممتلئ، مستدير", "kapha"]
+    ]
+  },
 
-*{
-  box-sizing:border-box;
-}
+  {
+    q: "كيف تصفين خدودك؟",
+    options: [
+      ["مغضنة، غائرة", "vata"],
+      ["مسطحة، ناعمة", "pitta"],
+      ["ممتلئة، مستديرة", "kapha"]
+    ]
+  },
 
-body{
-  margin:0;
-  font-family:Tahoma,Arial,sans-serif;
-  background:#F8F5EE;
-  color:#2E473B;
-  text-align:center;
-  min-height:100vh;
-}
+  {
+    q: "كيف تصفين عينيك؟",
+    options: [
+      ["صغيرة، غائرة، جافة، نشطة", "vata"],
+      ["حادة، مشرقة، رمادية/خضراء، حساسة للضوء", "pitta"],
+      ["واسعة، جميلة، زرقاء/سوداء/بنية، هادئة ومفعمة بالمحبة", "kapha"]
+    ]
+  },
 
-.container{
-  padding:30px 20px;
-  max-width:650px;
-  margin:auto;
-}
+  {
+    q: "كيف تصفين أنفك؟",
+    options: [
+      ["غير متساوية الشكل، منحرفة الحاجز", "vata"],
+      ["مدببة، طويلة، ذات رأس أحمر", "pitta"],
+      ["مستديرة، قصيرة، منحنية", "kapha"]
+    ]
+  },
 
-h1{
-  color:#5D8A63;
-  margin-bottom:25px;
-}
+  {
+    q: "كيف تصفين شفتيك؟",
+    options: [
+      ["جافة، متشققة، سوداء/بنية اللون", "vata"],
+      ["حمراء، ملتهبة، مصفرة", "pitta"],
+      ["ناعمة، دهنية، شاحبة/بيضاء", "kapha"]
+    ]
+  },
 
-#quiz{
-  background:white;
-  padding:25px 20px;
-  border-radius:25px;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
+  {
+    q: "كيف تصفين أسنانك؟",
+    options: [
+      ["بارزة، كبيرة، لثة رفيعة", "vata"],
+      ["متوسطة، ناعمة، لثة طرية", "pitta"],
+      ["بيضاء، سليمة، لثة قوية", "kapha"]
+    ]
+  },
 
-.question-number{
-  color:#777;
-  font-size:15px;
-  margin-bottom:15px;
-}
+  {
+    q: "كيف تصفين بشرتك؟",
+    options: [
+      ["رقيقة، جافة، باردة، خشنة، داكنة", "vata"],
+      ["ناعمة، دهنية، دافئة، وردية", "pitta"],
+      ["سميكة، دهنية، باردة، بيضاء، شاحبة", "kapha"]
+    ]
+  },
 
-.question-text{
-  font-size:22px;
-  line-height:1.7;
-  margin-bottom:25px;
-}
+  {
+    q: "كيف تصفين شعرك؟",
+    options: [
+      ["جاف، بني/أسود، متشابك، هش، متساقط", "vata"],
+      ["مستقيم، دهني، أشقر/رمادي/أحمر، أصلع", "pitta"],
+      ["كثيف، مجعد، دهني، مموج، طويل", "kapha"]
+    ]
+  },
 
-.answer{
-  display:block;
-  width:90%;
-  margin:12px auto;
-  padding:16px;
-  border:none;
-  border-radius:30px;
-  font-size:18px;
-  background:#5D8A63;
-  color:white;
-  cursor:pointer;
-}
+  {
+    q: "كيف تصفين أظافرك؟",
+    options: [
+      ["جافة، خشنة، هشة، سهلة الكسر", "vata"],
+      ["حادة، مرنة، وردية، لامعة", "pitta"],
+      ["سميكة، دهنية، ناعمة، مصقولة", "kapha"]
+    ]
+  },
 
-.answer:hover{
-  background:#4A7050;
-}
+  {
+    q: "كيف تصفين رقبتك؟",
+    options: [
+      ["نحيفة، طويلة", "vata"],
+      ["متوسطة الحجم", "pitta"],
+      ["كبيرة، مطوية الجلد", "kapha"]
+    ]
+  },
 
-.progress{
-  width:90%;
-  height:10px;
-  background:#E5E1D8;
-  border-radius:20px;
-  margin:20px auto 25px;
-  overflow:hidden;
-}
+  {
+    q: "كيف تصفين صدرك؟",
+    options: [
+      ["مسطح، غائر", "vata"],
+      ["معتدل", "pitta"],
+      ["عريض، دائري", "kapha"]
+    ]
+  },
 
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:#5D8A63;
-  border-radius:20px;
-  transition:.3s;
-}
+  {
+    q: "كيف تصفين بطنك؟",
+    options: [
+      ["نحيف، مسطح، غائر", "vata"],
+      ["معتدل", "pitta"],
+      ["كبير، منتفخ، ذو كرش", "kapha"]
+    ]
+  },
 
-#result{
-  display:none;
-  background:white;
-  padding:30px 20px;
-  margin-top:25px;
-  border-radius:25px;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
-  line-height:1.9;
-}
+  {
+    q: "كيف تصفين سرتك؟",
+    options: [
+      ["صغيرة، غير منتظمة", "vata"],
+      ["منفتحة، بيضاوية، مسطحة", "pitta"],
+      ["كبيرة، عميقة، مستديرة، ممتدة", "kapha"]
+    ]
+  },
 
-.restart{
-  display:block;
-  width:80%;
-  margin:25px auto 0;
-  padding:15px;
-  border:none;
-  border-radius:30px;
-  font-size:18px;
-  background:#5D8A63;
-  color:white;
-  cursor:pointer;
-}
+  {
+    q: "كيف تصفين وركيك؟",
+    options: [
+      ["نحيفان، رفيعان", "vata"],
+      ["معتدلان، ثقيلان", "pitta"],
+      ["كبيران", "kapha"]
+    ]
+  },
 
-</style>
+  {
+    q: "كيف تصفين مفاصلك؟",
+    options: [
+      ["باردة، خشنة الغضاريف", "vata"],
+      ["معتدلة", "pitta"],
+      ["كبيرة، لينة الغضاريف", "kapha"]
+    ]
+  },
 
-</head>
+  {
+    q: "كيف تصفين شهيتك؟",
+    options: [
+      ["شهية غير منتظمة", "vata"],
+      ["قوية بشكل مفرط", "pitta"],
+      ["بطيئة لكن منتظمة", "kapha"]
+    ]
+  },
 
-<body>
+  {
+    q: "كيف تصفين هضمك؟",
+    options: [
+      ["غير منتظم، يسبب غازات", "vata"],
+      ["سريع، يتسبب في حرقة معدة", "pitta"],
+      ["بطيء، يشكل المخاط", "kapha"]
+    ]
+  },
 
-<div class="container">
+  {
+    q: "ما الأذواق التي تفضلينها؟",
+    options: [
+      ["الحلو، الحامض، المالح", "vata"],
+      ["الحلو، المر، القابض", "pitta"],
+      ["المر، اللاذع، القابض", "kapha"]
+    ]
+  },
 
-<h1>🌿 Dosha Balance</h1>
+  {
+    q: "كيف تصفين عطشك؟",
+    options: [
+      ["غير منتظم", "vata"],
+      ["مفرط", "pitta"],
+      ["نادر", "kapha"]
+    ]
+  },
 
-<div id="quiz">
+  {
+    q: "كيف تصفين الإخراج؟",
+    options: [
+      ["إمساك", "vata"],
+      ["إسهال", "pitta"],
+      ["سمين، دهني، بطيء", "kapha"]
+    ]
+  },
 
-  <div class="question-number" id="questionNumber"></div>
+  {
+    q: "كيف تصفين نشاطك البدني؟",
+    options: [
+      ["مفرط النشاط", "vata"],
+      ["معتدل", "pitta"],
+      ["كسول", "kapha"]
+    ]
+  },
 
-  <div class="progress">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
+  {
+    q: "كيف تصفين نشاطك العملي؟",
+    options: [
+      ["مفرط النشاط", "vata"],
+      ["معتدل", "pitta"],
+      ["بليد، بطيء الفهم", "kapha"]
+    ]
+  },
 
-  <div class="question-text" id="questionText"></div>
+  {
+    q: "كيف تصفين مشاعرك؟",
+    options: [
+      ["القلق، الخوف، عدم اليقين", "vata"],
+      ["الغضب، الكراهية، الغيرة", "pitta"],
+      ["الهدوء، الجشع، التعلق", "kapha"]
+    ]
+  },
 
-  <div id="answers"></div>
+  {
+    q: "كيف تصفين إيمانك؟",
+    options: [
+      ["متقلب", "vata"],
+      ["متطرف", "pitta"],
+      ["ثابت", "kapha"]
+    ]
+  },
 
-</div>
+  {
+    q: "كيف تصفين فهمك؟",
+    options: [
+      ["استجابة سريعة لكن خاطئة", "vata"],
+      ["استجابة دقيقة", "pitta"],
+      ["استجابة بطيئة ومضبوطة", "kapha"]
+    ]
+  },
 
-<div id="result"></div>
+  {
+    q: "كيف تصفين ذاكرتك؟",
+    options: [
+      ["قوية في المدى القصير، ضعيفة في المدى البعيد", "vata"],
+      ["تذكر حاد", "pitta"],
+      ["تذكر بطيء لكن مستمر", "kapha"]
+    ]
+  },
 
-</div>
+  {
+    q: "كيف تصفين أحلامك؟",
+    options: [
+      ["سريعة، نشطة، متعددة، مليئة بالمخاوف", "vata"],
+      ["حرائق، حروب، عنف", "pitta"],
+      ["بحيرات، ثلوج، رومانسية", "kapha"]
+    ]
+  },
 
+  {
+    q: "كيف تصفين نومك؟",
+    options: [
+      ["هزيل، متقطع، أرق", "vata"],
+      ["ليلًا لكن متواصل", "pitta"],
+      ["عميق، ممتد", "kapha"]
+    ]
+  },
 
-<script src="script.js"></script>
+  {
+    q: "كيف تصفين أسلوب كلامك؟",
+    options: [
+      ["سريع، غير واضح", "vata"],
+      ["حاد، ثاقب", "pitta"],
+      ["بطيء، رتيب", "kapha"]
+    ]
+  },
 
-</body>
+  {
+    q: "كيف تصفين حالتك المادية؟",
+    options: [
+      ["فقيرة، إنفاق المال على التفاهات", "vata"],
+      ["إنفاق المال على الكماليات", "pitta"],
+      ["غنية، محافظة، جيدة في ادخار المال", "kapha"]
+    ]
+  }
 
-</html>
+];
