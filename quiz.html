@@ -3,9 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Dosha Balance - اختبار الدوشا</title>
 
@@ -16,7 +14,7 @@
 
     body {
       margin: 0;
-      padding: 20px;
+      padding: 15px;
       min-height: 100vh;
       background: #F8F5EE;
       color: #294537;
@@ -25,20 +23,20 @@
 
     .card {
       width: 100%;
-      max-width: 650px;
-      margin: 25px auto;
-      background: white;
+      max-width: 700px;
+      margin: 20px auto;
+      background: #ffffff;
       border-radius: 28px;
-      padding: 28px 22px;
+      padding: 25px 20px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
 
     .logo {
       text-align: center;
       color: #5D8A63;
-      font-size: 28px;
+      font-size: 29px;
       font-weight: bold;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .subtitle {
@@ -54,7 +52,7 @@
       background: #E8E4DA;
       border-radius: 20px;
       overflow: hidden;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .progress {
@@ -69,7 +67,7 @@
       text-align: center;
       color: #777;
       font-size: 14px;
-      margin-bottom: 18px;
+      margin: 12px 0 18px;
     }
 
     .question {
@@ -78,10 +76,10 @@
       line-height: 1.7;
       text-align: center;
       margin-bottom: 25px;
-      color: #294537;
     }
 
     .option {
+      display: block;
       width: 100%;
       padding: 17px 15px;
       margin: 12px 0;
@@ -104,58 +102,124 @@
       transform: scale(0.98);
     }
 
+    .hidden {
+      display: none !important;
+    }
+
+    /* النتيجة */
+
     .result {
       text-align: center;
     }
 
-    .result h2 {
+    .result-title {
       color: #5D8A63;
       font-size: 30px;
-      margin-bottom: 15px;
+      margin: 10px 0 15px;
+    }
+
+    .result-image {
+      width: 100%;
+      max-width: 650px;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px;
+      border-radius: 20px;
     }
 
     .result-name {
-      font-size: 27px;
+      font-size: 28px;
       font-weight: bold;
-      margin: 20px 0;
       color: #294537;
+      margin: 15px 0;
     }
 
-    .result-text {
+    .result-description {
       font-size: 17px;
-      line-height: 1.9;
+      line-height: 2;
       color: #555;
+      margin-bottom: 25px;
+    }
+
+    .section {
+      margin: 22px 0;
+      padding: 20px;
+      border-radius: 22px;
+      background: #F8F5EE;
+      text-align: right;
+    }
+
+    .section-title {
+      display: inline-block;
+      background: #5D8A63;
+      color: white;
+      padding: 9px 20px;
+      border-radius: 25px;
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .section p {
+      font-size: 16px;
+      line-height: 1.9;
+      margin: 8px 0;
+    }
+
+    .section ul {
+      padding-right: 22px;
+      margin: 5px 0;
+    }
+
+    .section li {
+      margin: 9px 0;
+      line-height: 1.7;
+    }
+
+    .warmup {
+      background: #FFF8E8;
+      border: 1px solid #E7D8AA;
+    }
+
+    .warmup .section-title {
+      background: #9A7A35;
     }
 
     .restart {
       border: none;
       background: #5D8A63;
       color: white;
-      padding: 15px 30px;
+      padding: 15px 32px;
       border-radius: 30px;
       font-family: inherit;
-      font-size: 16px;
+      font-size: 17px;
       cursor: pointer;
-      margin-top: 25px;
+      margin-top: 10px;
     }
 
     .restart:hover {
       opacity: 0.9;
     }
 
-    .hidden {
-      display: none;
+    .score-box {
+      margin: 20px 0;
+      padding: 15px;
+      border-radius: 18px;
+      background: #F4F8F3;
+      font-size: 15px;
+      line-height: 2;
     }
 
     @media (max-width: 500px) {
 
       body {
-        padding: 12px;
+        padding: 10px;
       }
 
       .card {
-        margin: 10px auto;
-        padding: 24px 17px;
+        margin: 8px auto;
+        padding: 22px 15px;
+        border-radius: 24px;
       }
 
       .question {
@@ -166,14 +230,28 @@
         font-size: 16px;
         padding: 15px 12px;
       }
+
+      .result-title {
+        font-size: 26px;
+      }
+
+      .result-name {
+        font-size: 25px;
+      }
+
+      .section {
+        padding: 16px;
+      }
     }
   </style>
 </head>
+
 
 <body>
 
   <div class="card">
 
+    <!-- عنوان الموقع -->
     <div class="logo">
       🌿 Dosha Balance
     </div>
@@ -181,6 +259,9 @@
     <div class="subtitle">
       اكتشفي طبيعتك التكوينية
     </div>
+
+
+    <!-- ==================== الاختبار ==================== -->
 
     <div id="quizArea">
 
@@ -196,13 +277,89 @@
 
     </div>
 
+
+    <!-- ==================== النتيجة ==================== -->
+
     <div id="resultArea" class="result hidden">
 
-      <h2>نتيجتك</h2>
+      <h2 class="result-title">
+        نتيجتك
+      </h2>
+
+      <!-- صورة الدوشا -->
+      <img
+        id="resultImage"
+        class="result-image"
+        src=""
+        alt="نتيجة الدوشا"
+      >
 
       <div id="resultName" class="result-name"></div>
 
-      <div id="resultText" class="result-text"></div>
+      <div id="resultDescription" class="result-description"></div>
+
+
+      <!-- الدرجات -->
+      <div id="scoreBox" class="score-box"></div>
+
+
+      <!-- الأطعمة -->
+      <div class="section">
+
+        <div class="section-title">
+          🍽️ الأطعمة المناسبة
+        </div>
+
+        <div id="foodContent"></div>
+
+      </div>
+
+
+      <!-- الإحماء -->
+      <div class="section warmup">
+
+        <div class="section-title">
+          🌿 قبل اليوغا
+        </div>
+
+        <p>
+          قبل البدء بتمارين اليوغا، خصصي من
+          <strong>5 إلى 10 دقائق للإحماء</strong>.
+          ابدئي بحركات لطيفة للمفاصل وتمدد خفيف مع التنفس،
+          ثم انتقلي تدريجيًا إلى وضعيات اليوغا.
+        </p>
+
+        <p>
+          الهدف هو تجهيز الجسم للحركة وتجنب الإجهاد،
+          مع التوقف إذا شعرتِ بألم أو انزعاج غير معتاد.
+        </p>
+
+      </div>
+
+
+      <!-- اليوغا -->
+      <div class="section">
+
+        <div class="section-title">
+          🧘 تمارين اليوغا المناسبة
+        </div>
+
+        <div id="yogaContent"></div>
+
+      </div>
+
+
+      <!-- النصائح -->
+      <div class="section">
+
+        <div class="section-title">
+          ✨ نصائح يومية
+        </div>
+
+        <div id="tipsContent"></div>
+
+      </div>
+
 
       <button class="restart" onclick="restartQuiz()">
         إعادة الاختبار
@@ -213,9 +370,12 @@
   </div>
 
 
-  <!-- ملف الأسئلة -->
+  <!-- ==================== الأسئلة ==================== -->
+
   <script src="script.js"></script>
 
+
+  <!-- ==================== تشغيل الاختبار ==================== -->
 
   <script>
 
@@ -238,8 +398,13 @@
         kapha: 0
       };
 
-      document.getElementById("quizArea").classList.remove("hidden");
-      document.getElementById("resultArea").classList.add("hidden");
+      document
+        .getElementById("quizArea")
+        .classList.remove("hidden");
+
+      document
+        .getElementById("resultArea")
+        .classList.add("hidden");
 
       showQuestion();
     }
@@ -250,7 +415,8 @@
       if (typeof questions === "undefined") {
 
         document.getElementById("question").innerHTML =
-          "حدث خطأ في تحميل الأسئلة.<br><br>تأكدي من وجود ملف script.js في نفس المجلد.";
+          "حدث خطأ في تحميل الأسئلة.<br><br>" +
+          "تأكدي من وجود ملف script.js في نفس المجلد.";
 
         return;
       }
@@ -264,30 +430,44 @@
       }
 
 
-      const current = questions[quizIndex];
-
-      document.getElementById("questionNumber").textContent =
-        "السؤال " + (quizIndex + 1) + " من " + questions.length;
+      const currentQuestionData =
+        questions[quizIndex];
 
 
-      document.getElementById("question").textContent =
-        current.q;
+      document
+        .getElementById("questionNumber")
+        .textContent =
+        "السؤال " +
+        (quizIndex + 1) +
+        " من " +
+        questions.length;
+
+
+      document
+        .getElementById("question")
+        .textContent =
+        currentQuestionData.q;
 
 
       const optionsContainer =
         document.getElementById("options");
 
+
       optionsContainer.innerHTML = "";
 
 
-      current.options.forEach(function(option) {
+      currentQuestionData.options.forEach(function(option) {
 
         const button =
           document.createElement("button");
 
+
         button.className = "option";
 
-        button.textContent = option[0];
+
+        button.textContent =
+          option[0];
+
 
         button.onclick = function() {
 
@@ -295,15 +475,19 @@
 
         };
 
+
         optionsContainer.appendChild(button);
 
       });
 
 
       const progress =
-        ((quizIndex) / questions.length) * 100;
+        (quizIndex / questions.length) * 100;
 
-      document.getElementById("progress").style.width =
+
+      document
+        .getElementById("progress")
+        .style.width =
         progress + "%";
     }
 
@@ -329,70 +513,281 @@
     }
 
 
-    function showResult() {
-
-      document.getElementById("quizArea").classList.add("hidden");
-
-      document.getElementById("resultArea").classList.remove("hidden");
-
-      document.getElementById("progress").style.width = "100%";
-
-
-      let resultType = "";
-
+    function getResultType() {
 
       if (
         quizScores.vata >= quizScores.pitta &&
         quizScores.vata >= quizScores.kapha
       ) {
 
-        resultType = "vata";
-
-      } else if (
-        quizScores.pitta >= quizScores.vata &&
-        quizScores.pitta >= quizScores.kapha
-      ) {
-
-        resultType = "pitta";
-
-      } else {
-
-        resultType = "kapha";
+        return "vata";
 
       }
 
 
-      const names = {
+      if (
+        quizScores.pitta >= quizScores.vata &&
+        quizScores.pitta >= quizScores.kapha
+      ) {
 
-        vata: "فاتا Vata",
+        return "pitta";
 
-        pitta: "بيتا Pitta",
+      }
 
-        kapha: "كافا Kapha"
+
+      return "kapha";
+    }
+
+
+    function showResult() {
+
+      document
+        .getElementById("quizArea")
+        .classList.add("hidden");
+
+
+      document
+        .getElementById("resultArea")
+        .classList.remove("hidden");
+
+
+      document
+        .getElementById("progress")
+        .style.width = "100%";
+
+
+      const resultType =
+        getResultType();
+
+
+      const resultData = {
+
+        vata: {
+
+          name: "دوشا فاتا VATA",
+
+          image: "vata.png",
+
+          description:
+            "الهواء والأثير – الحركة والإبداع. " +
+            "تتميز فاتا بالحساسية والنشاط وسرعة التفكير والإبداع، " +
+            وقد تميل إلى القلق والتشتت عند الإجهاد.",
+
+          foods: [
+            "شوفان دافئ",
+            "بطاطا حلوة",
+            "حساء العدس",
+            "لوز منقوع",
+            "زيت السمسم",
+            "مشروبات دافئة مثل الزنجبيل والقرفة"
+          ],
+
+          yoga: [
+            "وضعية الطفل – تساعد على الاسترخاء وتهدئة العقل.",
+            "الانحناء الأمامي – يساعد على الهدوء وتخفيف التوتر.",
+            "وضعية الساقين على الحائط – وضعية مريحة للاسترخاء."
+          ],
+
+          tips: [
+            "حافظي على روتين يومي منتظم.",
+            "تناولي وجبات دافئة ومطبوخة.",
+            "تجنبي البرد والرياح والسهر الطويل.",
+            "مارسي التنفس الهادئ والتأمل يوميًا.",
+            "امنحي نفسك وقتًا كافيًا للراحة."
+          ]
+
+        },
+
+
+        pitta: {
+
+          name: "دوشا بيتا PITTA",
+
+          image: "pitta.png",
+
+          description:
+            "النار والماء – التحول والطاقة. " +
+            "تتميز بيتا بالذكاء والطموح والتنظيم والطاقة، " +
+            وقد تميل إلى الغضب أو الانتقاد عند زيادة الضغط.",
+
+          foods: [
+            "خيار",
+            "بطيخ",
+            "كزبرة",
+            "أرز بسمتي",
+            "شاي النعناع",
+            "أطعمة خفيفة ومنعشة"
+          ],
+
+          yoga: [
+            "وضعية التبريد – تساعد على الهدوء والاسترخاء.",
+            "الانحناء الجانبي – يساعد على المرونة والتنفس.",
+            "وضعية الجمل – تمرين لطيف مع التركيز على التنفس."
+          ],
+
+          tips: [
+            "تجنبي الحر الزائد والحرارة الشديدة.",
+            "تناولي أطعمة باردة ومنعشة باعتدال.",
+            "خصصي وقتًا للاسترخاء والطبيعة.",
+            "تمرني بلطف وتجنبي الإفراط.",
+            "حافظي على التوازن بين العمل والراحة."
+          ]
+
+        },
+
+
+        kapha: {
+
+          name: "دوشا كافا KAPHA",
+
+          image: "kapha.png",
+
+          description:
+            "الأرض والماء – الثبات والبناء. " +
+            "تتميز كافا بالهدوء والصبر والثبات والحب، " +
+            وقد تميل إلى الكسل أو التعلق عند قلة الحركة.",
+
+          foods: [
+            "زنجبيل",
+            "تفاح",
+            "كينوا أو شوفان",
+            "خضار ورقية",
+            "شاي أخضر",
+            "أطعمة خفيفة ومتنوعة"
+          ],
+
+          yoga: [
+            "وضعية المحارب – تنشط الجسم وتزيد الحيوية.",
+            "وضعية القارب – تقوي عضلات البطن وتحفز النشاط.",
+            "الانحناء للأمام من الجلوس – يساعد على الاسترخاء.",
+            "يمكن إضافة حركات نشطة مناسبة لمستوى لياقتك."
+          ],
+
+          tips: [
+            "تحركي يوميًا وشاركي في أنشطة نشطة.",
+            "تناولي وجبات خفيفة ودافئة.",
+            "تجنبي النوم الزائد والسكريات بكثرة.",
+            "حافظي على مساحة خفيفة ومرتبة حولك.",
+            "ابدئي يومك مبكرًا وحافظي على النشاط."
+          ]
+
+        }
 
       };
 
 
-      const descriptions = {
-
-        vata:
-          "تتميز طبيعة فاتا بالحركة والخفة والمرونة. قد تستفيد من الروتين المنتظم، والدفء، والراحة، والأطعمة المغذية.",
-
-        pitta:
-          "تتميز طبيعة بيتا بالنشاط والقوة والتركيز. قد تستفيد من التوازن والهدوء والأطعمة المنعشة وتجنب الإفراط في الإجهاد.",
-
-        kapha:
-          "تتميز طبيعة كافا بالثبات والهدوء والقوة. قد تستفيد من الحركة المنتظمة، والنشاط، والأطعمة الخفيفة والمتنوعة."
-
-      };
+      const data =
+        resultData[resultType];
 
 
-      document.getElementById("resultName").textContent =
-        names[resultType];
+      /* الصورة */
+
+      const resultImage =
+        document.getElementById("resultImage");
 
 
-      document.getElementById("resultText").textContent =
-        descriptions[resultType];
+      resultImage.src =
+        data.image;
+
+
+      resultImage.alt =
+        data.name;
+
+
+      resultImage.onerror =
+        function() {
+
+          this.style.display = "none";
+
+        };
+
+
+      /* الاسم */
+
+      document
+        .getElementById("resultName")
+        .textContent =
+        data.name;
+
+
+      /* الوصف */
+
+      document
+        .getElementById("resultDescription")
+        .textContent =
+        data.description;
+
+
+      /* الدرجات */
+
+      document
+        .getElementById("scoreBox")
+        .innerHTML =
+        "فاتا: " + quizScores.vata +
+        " &nbsp; | &nbsp; " +
+        "بيتا: " + quizScores.pitta +
+        " &nbsp; | &nbsp; " +
+        "كافا: " + quizScores.kapha;
+
+
+      /* الأطعمة */
+
+      let foodHTML = "<ul>";
+
+      data.foods.forEach(function(food) {
+
+        foodHTML +=
+          "<li>" + food + "</li>";
+
+      });
+
+      foodHTML += "</ul>";
+
+
+      document
+        .getElementById("foodContent")
+        .innerHTML =
+        foodHTML;
+
+
+      /* اليوغا */
+
+      let yogaHTML = "<ul>";
+
+      data.yoga.forEach(function(yoga) {
+
+        yogaHTML +=
+          "<li>" + yoga + "</li>";
+
+      });
+
+      yogaHTML += "</ul>";
+
+
+      document
+        .getElementById("yogaContent")
+        .innerHTML =
+        yogaHTML;
+
+
+      /* النصائح */
+
+      let tipsHTML = "<ul>";
+
+      data.tips.forEach(function(tip) {
+
+        tipsHTML +=
+          "<li>" + tip + "</li>";
+
+      });
+
+      tipsHTML += "</ul>";
+
+
+      document
+        .getElementById("tipsContent")
+        .innerHTML =
+        tipsHTML;
 
     }
 
@@ -401,8 +796,15 @@
 
       startQuiz();
 
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
     }
 
+
+    /* تشغيل الاختبار عند فتح الصفحة */
 
     startQuiz();
 
