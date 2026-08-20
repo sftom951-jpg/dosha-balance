@@ -1,3 +1,7 @@
+// ============================
+// Dosha Balance - Quiz
+// ============================
+
 let currentQuestion = 0;
 
 let scores = {
@@ -6,293 +10,298 @@ let scores = {
   kapha: 0
 };
 
+
+// ============================
+// الأسئلة الـ 32
+// ============================
+
 const questions = [
 
   {
     q: "كيف تصفين حجم جسمك؟",
     options: [
-      ["نحيف", "vata"],
-      ["متوسط", "pitta"],
-      ["كبير", "kapha"]
+      ["نحيف وصغير البنية", "vata"],
+      ["متوسط البنية", "pitta"],
+      ["كبير أو ممتلئ البنية", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين وزن جسمك؟",
+    q: "كيف تصفين وزنك بشكل عام؟",
     options: [
-      ["منخفض", "vata"],
-      ["متوسط", "pitta"],
-      ["زائد الوزن", "kapha"]
+      ["وزني منخفض وأجد صعوبة في زيادته", "vata"],
+      ["وزني متوسط ومستقر غالبًا", "pitta"],
+      ["أزداد في الوزن بسهولة", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين ذقنك؟",
+    q: "كيف تصفين شكل ذقنك؟",
     options: [
-      ["نحيل، زاوي، مدبب", "vata"],
-      ["متوسط، مستدير", "pitta"],
-      ["مزدوج، ممتلئ، مستدير", "kapha"]
+      ["نحيف أو زاوي", "vata"],
+      ["مدبب وواضح", "pitta"],
+      ["مستدير أو ممتلئ", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين خدودك؟",
+    q: "كيف تبدو خدودك عادةً؟",
     options: [
-      ["مغضنة، غائرة", "vata"],
-      ["مسطحة، ناعمة", "pitta"],
-      ["ممتلئة، مستديرة", "kapha"]
+      ["نحيفة أو غائرة", "vata"],
+      ["ناعمة ومسطحة نسبيًا", "pitta"],
+      ["ممتلئة ومستديرة", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين عينيك؟",
     options: [
-      ["صغيرة، غائرة، جافة، نشطة", "vata"],
-      ["حادة، مشرقة، رمادية/خضراء، حساسة للضوء", "pitta"],
-      ["واسعة، جميلة، زرقاء/سوداء/بنية، هادئة ومفعمة بالمحبة", "kapha"]
+      ["صغيرة أو غائرة وقد تبدو جافة أو كثيرة الحركة", "vata"],
+      ["حادة ومشرقة وقد تكون حساسة للضوء", "pitta"],
+      ["واسعة وهادئة وذات مظهر لطيف", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين أنفك؟",
+    q: "كيف تصفين شكل أنفك؟",
     options: [
-      ["غير متساوية الشكل، منحرفة الحاجز", "vata"],
-      ["مدببة، طويلة، ذات رأس أحمر", "pitta"],
-      ["مستديرة، قصيرة، منحنية", "kapha"]
+      ["غير منتظم أو غير متماثل قليلًا", "vata"],
+      ["طويل أو مدبب وقد يكون طرفه محمرًا", "pitta"],
+      ["مستدير أو قصير أو منحني", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين شفتيك؟",
     options: [
-      ["جافة، متشققة، سوداء/بنية اللون", "vata"],
-      ["حمراء، ملتهبة، مصفرة", "pitta"],
-      ["ناعمة، دهنية، شاحبة/بيضاء", "kapha"]
+      ["جافتان أو رقيقان وقد يميلان للون الداكن", "vata"],
+      ["حمراوان أو دافئتا اللون وقد تبدوان حسّاستين", "pitta"],
+      ["ناعمتان وممتلئتان ورطبتان نسبيًا", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين أسنانك؟",
     options: [
-      ["بارزة، كبيرة، لثة رفيعة", "vata"],
-      ["متوسطة، ناعمة، لثة طرية", "pitta"],
-      ["بيضاء، سليمة، لثة قوية", "kapha"]
+      ["بارزة أو كبيرة نسبيًا واللثة رقيقة", "vata"],
+      ["متوسطة وناعمة", "pitta"],
+      ["بيضاء وصحية واللثة قوية", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين بشرتك؟",
     options: [
-      ["رقيقة، جافة، باردة، خشنة، داكنة", "vata"],
-      ["ناعمة، دهنية، دافئة، وردية", "pitta"],
-      ["سميكة، دهنية، باردة، بيضاء، شاحبة", "kapha"]
+      ["رقيقة وجافة وباردة أو خشنة", "vata"],
+      ["ناعمة ودافئة وقد تميل للون الوردي", "pitta"],
+      ["سميكة وناعمة ودهنية أو باردة وشاحبة", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين شعرك؟",
     options: [
-      ["جاف، بني، أسود، متشابك، هش، متساقط", "vata"],
-      ["مستقيم، دهني، أشقر، رمادي، أحمر، أصلع", "pitta"],
-      ["كثيف، مجعد، دهني، مموج، طويل", "kapha"]
+      ["جاف وهش أو متشابك وسهل التساقط", "vata"],
+      ["مستقيم أو ناعم وقد يكون دهنيًا", "pitta"],
+      ["كثيف ومجعد أو مموج ويميل للدهنية", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين أظافرك؟",
     options: [
-      ["جافة، خشنة، هشة، سهلة الكسر", "vata"],
-      ["حادة، مرنة، وردية، لامعة", "pitta"],
-      ["سميكة، دهنية، ناعمة، مصقولة", "kapha"]
+      ["جافة وخشنة وهشة وسهلة الكسر", "vata"],
+      ["حادة ومرنة ووردية ولامعة", "pitta"],
+      ["سميكة وناعمة وملساء", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين رقبتك؟",
     options: [
-      ["نحيفة، طويلة", "vata"],
+      ["نحيفة وطويلة", "vata"],
       ["متوسطة الحجم", "pitta"],
-      ["كبيرة، مطوية الجلد", "kapha"]
+      ["كبيرة وممتلئة", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين صدرك؟",
+    q: "كيف تصفين منطقة الصدر؟",
     options: [
-      ["مسطح، غائر", "vata"],
-      ["معتدل", "pitta"],
-      ["عريض، دائري", "kapha"]
+      ["مسطحة أو غائرة نسبيًا", "vata"],
+      ["متوسطة الحجم", "pitta"],
+      ["عريضة ومستديرة", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين بطنك؟",
     options: [
-      ["نحيف، مسطح، غائر", "vata"],
-      ["معتدل", "pitta"],
-      ["كبير، منتفخ، ذو كرش", "kapha"]
+      ["نحيف ومسطح أو غائر", "vata"],
+      ["متوسط الحجم", "pitta"],
+      ["كبير أو ممتلئ ويميل لظهور البطن", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين سرتك؟",
+    q: "كيف تصفين شكل السرة؟",
     options: [
-      ["صغيرة، غير منتظمة", "vata"],
-      ["منفتحة، بيضاوية، مسطحة", "pitta"],
-      ["كبيرة، عميقة، مستديرة، ممتدة", "kapha"]
+      ["صغيرة أو غير منتظمة أو بارزة", "vata"],
+      ["بيضاوية ومسطحة نسبيًا", "pitta"],
+      ["كبيرة وعميقة ومستديرة أو ممتدة", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين وركيك؟",
+    q: "كيف تصفين الوركين؟",
     options: [
-      ["نحيفان، رفيعان", "vata"],
-      ["معتدلان، ثقيلان", "pitta"],
-      ["كبيرتان", "kapha"]
+      ["نحيفان ورفيعان", "vata"],
+      ["متوسطان وممتلئان بشكل معتدل", "pitta"],
+      ["كبيران وممتلئان", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين مفاصلك؟",
     options: [
-      ["باردة، خشنة الغضاريف", "vata"],
-      ["معتدلة", "pitta"],
-      ["كبيرة، لينة الغضاريف", "kapha"]
+      ["صغيرة أو باردة وخشنة نسبيًا", "vata"],
+      ["متوسطة الحجم", "pitta"],
+      ["كبيرة ومرنة وناعمة", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين شهيتك؟",
     options: [
-      ["شهية غير منتظمة", "vata"],
-      ["قوية بشكل مفرط", "pitta"],
-      ["بطيئة لكن منتظمة", "kapha"]
+      ["غير منتظمة؛ أحيانًا أشعر بالجوع وأحيانًا لا", "vata"],
+      ["قوية جدًا وأشعر بالجوع بوضوح", "pitta"],
+      ["هادئة ومنتظمة ويمكنني تأجيل الوجبة دون جوع شديد", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين هضمك؟",
+    q: "كيف تصفين عملية الهضم لديك؟",
     options: [
-      ["غير منتظم، يسبب غازات", "vata"],
-      ["سريع، يتسبب في حرقة معدة", "pitta"],
-      ["بطيء، يشكل المخاط", "kapha"]
+      ["غير منتظمة وأتعرض للغازات بسهولة", "vata"],
+      ["سريعة وقد أشعر بحرقة المعدة", "pitta"],
+      ["بطيئة وقد أشعر بالثقل", "kapha"]
     ]
   },
 
   {
-    q: "ما الأذواق التي تفضلينها؟",
+    q: "ما أنواع المذاقات التي تفضلينها غالبًا؟",
     options: [
-      ["الحلو، الحامض، المالح", "vata"],
-      ["الحلو، المر، القابض", "pitta"],
-      ["المر، اللاذع، القابض", "kapha"]
+      ["الحلو والحامض والمالح", "vata"],
+      ["الحلو والمر والقابض", "pitta"],
+      ["المر واللاذع والقابض", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين عطشك؟",
+    q: "كيف تصفين شعورك بالعطش؟",
     options: [
-      ["غير منتظم", "vata"],
-      ["مفرط", "pitta"],
-      ["نادر", "kapha"]
+      ["عطشي غير منتظم؛ أحيانًا أشعر به وأحيانًا لا", "vata"],
+      ["أشعر بالعطش كثيرًا", "pitta"],
+      ["نادرًا ما أشعر بالعطش", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين الإخراج؟",
+    q: "كيف تصفين الإخراج لديك؟",
     options: [
-      ["إمساك", "vata"],
-      ["إسهال", "pitta"],
-      ["سمين، دهني، بطيء", "kapha"]
+      ["أميل إلى الإمساك", "vata"],
+      ["أميل إلى الإسهال", "pitta"],
+      ["الإخراج بطيء وقد يكون ثقيلًا", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين نشاطك البدني؟",
     options: [
-      ["مفرط النشاط", "vata"],
-      ["معتدل", "pitta"],
-      ["كسول", "kapha"]
+      ["كثيرة الحركة وأميل إلى النشاط الزائد", "vata"],
+      ["نشاطي معتدل ومتوازن", "pitta"],
+      ["أفضل الراحة وأميل إلى قلة الحركة", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين نشاطك العملي؟",
+    q: "كيف تصفين نشاطك في العمل أو إنجاز المهام؟",
     options: [
-      ["مفرط النشاط", "vata"],
-      ["معتدل", "pitta"],
-      ["بليد، بطيء الفهم", "kapha"]
+      ["سريعة جدًا ومليئة بالنشاط", "vata"],
+      ["أعمل بوتيرة معتدلة ومنظمة", "pitta"],
+      ["أعمل ببطء وأحتاج وقتًا أطول للإنجاز", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين مشاعرك؟",
+    q: "كيف تتصرفين عندما تشعرين بالضغط أو الانزعاج؟",
     options: [
-      ["القلق، الخوف، عدم اليقين", "vata"],
-      ["الغضب، الكراهية، الغيرة", "pitta"],
-      ["الهدوء، الجشع، التعلق", "kapha"]
+      ["أشعر بالقلق أو الخوف وأفكر كثيرًا", "vata"],
+      ["أغضب بسرعة وأصبح عصبية", "pitta"],
+      ["أبقى هادئة وأفضل الاحتفاظ بمشاعري لنفسي", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين إيمانك؟",
+    q: "كيف تصفين إيمانك أو قناعاتك؟",
     options: [
-      ["متقلب", "vata"],
-      ["متطرف", "pitta"],
-      ["ثابت", "kapha"]
+      ["قد تتغير قناعاتي بسهولة", "vata"],
+      ["أتمسك بقناعاتي بقوة", "pitta"],
+      ["قناعاتي ثابتة ومستقرة", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين فهمك؟",
+    q: "كيف يكون فهمك للأمور الجديدة؟",
     options: [
-      ["استجابة سريعة لكن خاطئة", "vata"],
-      ["استجابة دقيقة", "pitta"],
-      ["استجابة بطيئة ومضبوطة", "kapha"]
+      ["أفهم بسرعة، لكن قد أخطئ بسبب السرعة", "vata"],
+      ["أفهم بسرعة ودقة وأنتبه للتفاصيل", "pitta"],
+      ["أحتاج وقتًا أطول للفهم، لكن فهمي ثابت", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين تذكرك؟",
+    q: "كيف تصفين ذاكرتك؟",
     options: [
-      ["قوي في المدى القصير، ضعيف في المدى البعيد", "vata"],
-      ["تذكر حاد", "pitta"],
-      ["تذكر بطيء لكن مستمر", "kapha"]
+      ["أتذكر الأشياء الجديدة بسرعة، لكن قد أنساها مع الوقت", "vata"],
+      ["ذاكرتي قوية وأتذكر التفاصيل جيدًا", "pitta"],
+      ["أحتاج وقتًا للحفظ، لكن ما أحفظه يبقى طويلًا", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين أحلامك؟",
+    q: "كيف تكون أحلامك عادةً؟",
     options: [
-      ["سريعة، نشطة، متعددة، مليئة بالمخاوف", "vata"],
-      ["حرائق، حروب، عنف", "pitta"],
-      ["بحيرات، ثلوج، رومانسية", "kapha"]
+      ["كثيرة ومتنوعة وسريعة وقد تتضمن الخوف أو الحركة", "vata"],
+      ["قد تتضمن النار أو الحروب أو المواقف العنيفة", "pitta"],
+      ["قد تتضمن الماء أو البحيرات أو الثلج أو المشاهد الرومانسية", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين نومك؟",
     options: [
-      ["هزيل، متقطع، أرق", "vata"],
-      ["ليلًا لكن متواصل", "pitta"],
-      ["عميق، ممتد", "kapha"]
+      ["خفيف ومتقطع وقد أعاني من الأرق", "vata"],
+      ["قليل نسبيًا لكنه متواصل", "pitta"],
+      ["عميق وطويل", "kapha"]
     ]
   },
 
   {
     q: "كيف تصفين أسلوب كلامك؟",
     options: [
-      ["سريع، غير واضح", "vata"],
-      ["حاد، ثاقب", "pitta"],
-      ["بطيء، رتيب", "kapha"]
+      ["أتكلم بسرعة وقد لا يكون كلامي واضحًا أحيانًا", "vata"],
+      ["كلامي واضح وحاد ومباشر", "pitta"],
+      ["أتكلم ببطء وبهدوء وبنبرة ثابتة", "kapha"]
     ]
   },
 
   {
-    q: "كيف تصفين حالتك المادية؟",
+    q: "كيف تصفين تعاملك مع المال؟",
     options: [
-      ["فقيرة، إنفاق المال على التفاهات", "vata"],
-      ["إنفاق المال على الكماليات", "pitta"],
-      ["غنية، محافظة، جيدة في ادخار المال", "kapha"]
+      ["قد أنفق المال بسرعة أو على أشياء صغيرة وغير ضرورية", "vata"],
+      ["أحب الإنفاق على الأشياء الفاخرة أو ذات الجودة", "pitta"],
+      ["أحب الادخار والمحافظة على المال", "kapha"]
     ]
   }
 
@@ -300,35 +309,33 @@ const questions = [
 
 
 // ============================
-// عرض السؤال
+// إظهار السؤال
 // ============================
 
 function showQuestion() {
 
-  const question = questions[currentQuestion];
-
-  const questionText =
+  const questionElement =
     document.getElementById("question") ||
     document.getElementById("questionText");
 
-  const optionsContainer =
-    document.getElementById("options") ||
-    document.getElementById("optionsContainer");
-
-  const progress =
-    document.getElementById("progress");
+  const answersElement =
+    document.getElementById("answers") ||
+    document.getElementById("options");
 
   const questionNumber =
-    document.getElementById("questionNumber");
+    document.getElementById("questionNumber") ||
+    document.getElementById("progressText");
 
-  if (!questionText || !optionsContainer) {
-    console.error("لم يتم العثور على عناصر السؤال في quiz.html");
+  if (!questionElement || !answersElement) {
+    console.error("لم يتم العثور على عناصر السؤال في الصفحة.");
     return;
   }
 
-  questionText.textContent = question.q;
+  const question = questions[currentQuestion];
 
-  optionsContainer.innerHTML = "";
+  questionElement.textContent = question.q;
+
+  answersElement.innerHTML = "";
 
   question.options.forEach(function(option) {
 
@@ -336,30 +343,50 @@ function showQuestion() {
 
     button.textContent = option[0];
 
-    button.className = "answer-btn";
+    button.className = "answer";
 
     button.onclick = function() {
       chooseAnswer(option[1]);
     };
 
-    optionsContainer.appendChild(button);
+    answersElement.appendChild(button);
 
   });
 
-  if (progress) {
-    const percent =
-      ((currentQuestion + 1) / questions.length) * 100;
-
-    progress.style.width = percent + "%";
-  }
-
   if (questionNumber) {
+
     questionNumber.textContent =
       "السؤال " +
       (currentQuestion + 1) +
       " من " +
       questions.length;
+
   }
+
+  updateProgress();
+
+}
+
+
+// ============================
+// شريط التقدم
+// ============================
+
+function updateProgress() {
+
+  const progressBar =
+    document.getElementById("progressBar") ||
+    document.querySelector(".progress-bar");
+
+  if (progressBar) {
+
+    const percent =
+      ((currentQuestion + 1) / questions.length) * 100;
+
+    progressBar.style.width = percent + "%";
+
+  }
+
 }
 
 
@@ -368,6 +395,10 @@ function showQuestion() {
 // ============================
 
 function chooseAnswer(type) {
+
+  if (!scores[type]) {
+    scores[type] = 0;
+  }
 
   scores[type]++;
 
@@ -382,6 +413,7 @@ function chooseAnswer(type) {
     showResult();
 
   }
+
 }
 
 
@@ -412,11 +444,17 @@ function showResult() {
     resultType = "kapha";
   }
 
+
   const resultNames = {
-    vata: "فاتا Vata",
-    pitta: "بيتا Pitta",
-    kapha: "كافا Kapha"
+
+    vata: "فاتا Vata 🌿",
+
+    pitta: "بيتا Pitta 🔥",
+
+    kapha: "كافا Kapha 🌱"
+
   };
+
 
   const resultDescriptions = {
 
@@ -428,16 +466,25 @@ function showResult() {
 
     kapha:
       "تتميز كافا بالثبات والهدوء والتحمل. قد تستفيدين من الحركة والنشاط وروتين يساعد على الحيوية."
+
   };
+
 
   const resultContainer =
     document.getElementById("result") ||
     document.getElementById("resultContainer");
 
+
   if (!resultContainer) {
-    console.error("لم يتم العثور على عنصر النتيجة في quiz.html");
+
+    console.error(
+      "لم يتم العثور على عنصر النتيجة في الصفحة."
+    );
+
     return;
+
   }
+
 
   resultContainer.innerHTML = `
 
@@ -473,7 +520,7 @@ function showResult() {
       </div>
 
       <button
-        onclick="location.reload()"
+        onclick="restartQuiz()"
         class="restart-btn"
       >
         إعادة الاختبار
@@ -483,16 +530,69 @@ function showResult() {
 
   `;
 
+
   const questionArea =
     document.getElementById("quiz") ||
     document.getElementById("quizContainer") ||
-    document.querySelector(".quiz-container");
+    document.getElementById("app");
+
 
   if (questionArea) {
+
     questionArea.style.display = "none";
+
   }
 
+
   resultContainer.style.display = "block";
+
+}
+
+
+// ============================
+// إعادة الاختبار
+// ============================
+
+function restartQuiz() {
+
+  currentQuestion = 0;
+
+  scores = {
+    vata: 0,
+    pitta: 0,
+    kapha: 0
+  };
+
+
+  const resultContainer =
+    document.getElementById("result") ||
+    document.getElementById("resultContainer");
+
+
+  if (resultContainer) {
+
+    resultContainer.innerHTML = "";
+
+    resultContainer.style.display = "none";
+
+  }
+
+
+  const questionArea =
+    document.getElementById("quiz") ||
+    document.getElementById("quizContainer") ||
+    document.getElementById("app");
+
+
+  if (questionArea) {
+
+    questionArea.style.display = "block";
+
+  }
+
+
+  showQuestion();
+
 }
 
 
@@ -500,16 +600,23 @@ function showResult() {
 // بدء الاختبار
 // ============================
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
 
-  const resultContainer =
-    document.getElementById("result") ||
-    document.getElementById("resultContainer");
+    const resultContainer =
+      document.getElementById("result") ||
+      document.getElementById("resultContainer");
 
-  if (resultContainer) {
-    resultContainer.style.display = "none";
+
+    if (resultContainer) {
+
+      resultContainer.style.display = "none";
+
+    }
+
+
+    showQuestion();
+
   }
-
-  showQuestion();
-
-});
+);
