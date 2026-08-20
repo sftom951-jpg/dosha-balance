@@ -1,5 +1,6 @@
 // ============================
-// Dosha Balance - Quiz
+// Dosha Balance
+// اختبار الدوشا - 32 سؤال
 // ============================
 
 let currentQuestion = 0;
@@ -12,7 +13,7 @@ let scores = {
 
 
 // ============================
-// الأسئلة الـ 32
+// الأسئلة
 // ============================
 
 const questions = [
@@ -309,84 +310,165 @@ const questions = [
 
 
 // ============================
-// إظهار السؤال
+// بيانات النتائج
+// ============================
+
+const resultData = {
+
+  vata: {
+    name: "دوشا فاتا VATA",
+    image: "vata.png",
+    description:
+      "الهواء والأثير – الحركة والإبداع. تتميز فاتا بالحساسية والنشاط وسرعة التفكير والإبداع، وقد تميل إلى القلق والتشتت عند الإجهاد.",
+    foods: [
+      "شوفان دافئ",
+      "بطاطا حلوة",
+      "حساء العدس",
+      "لوز منقوع",
+      "زيت السمسم",
+      "مشروبات دافئة مثل الزنجبيل والقرفة"
+    ],
+    yoga: [
+      "وضعية الطفل – تساعد على الاسترخاء وتهدئة العقل.",
+      "الانحناء الأمامي – يساعد على الهدوء وتخفيف التوتر.",
+      "وضعية الساقين على الحائط – وضعية مريحة للاسترخاء."
+    ],
+    tips: [
+      "حافظي على روتين يومي منتظم.",
+      "تناولي وجبات دافئة ومطبوخة.",
+      "تجنبي البرد والرياح والسهر الطويل.",
+      "مارسي التنفس الهادئ والتأمل يوميًا.",
+      "امنحي نفسك وقتًا كافيًا للراحة."
+    ]
+  },
+
+  pitta: {
+    name: "دوشا بيتا PITTA",
+    image: "pitta.png",
+    description:
+      "النار والماء – التحول والطاقة. تتميز بيتا بالذكاء والطموح والتنظيم والطاقة، وقد تميل إلى الغضب أو الانتقاد عند زيادة الضغط.",
+    foods: [
+      "خيار",
+      "بطيخ",
+      "كزبرة",
+      "أرز بسمتي",
+      "شاي النعناع",
+      "أطعمة خفيفة ومنعشة"
+    ],
+    yoga: [
+      "وضعيات يوغا لطيفة ومهدئة.",
+      "تمارين التنفس الهادئ.",
+      "التمدد الخفيف مع التركيز على الاسترخاء."
+    ],
+    tips: [
+      "تجنبي الحر الزائد والحرارة الشديدة.",
+      "تناولي أطعمة منعشة باعتدال.",
+      "خصصي وقتًا للاسترخاء والطبيعة.",
+      "تمرني بلطف وتجنبي الإفراط.",
+      "حافظي على التوازن بين العمل والراحة."
+    ]
+  },
+
+  kapha: {
+    name: "دوشا كافا KAPHA",
+    image: "kapha.png",
+    description:
+      "الأرض والماء – الثبات والبناء. تتميز كافا بالهدوء والصبر والثبات والحب، وقد تميل إلى الكسل أو التعلق عند قلة الحركة.",
+    foods: [
+      "زنجبيل",
+      "تفاح",
+      "كينوا أو شوفان",
+      "خضار ورقية",
+      "شاي أخضر",
+      "أطعمة خفيفة ومتنوعة"
+    ],
+    yoga: [
+      "وضعية المحارب – تساعد على تنشيط الجسم.",
+      "وضعية القارب – تساعد على تقوية الجسم.",
+      "تمارين يوغا نشطة مناسبة لمستوى لياقتك."
+    ],
+    tips: [
+      "تحركي يوميًا وحافظي على نشاطك.",
+      "تناولي وجبات خفيفة ومتوازنة.",
+      "تجنبي الخمول والنوم الزائد.",
+      "ابدئي يومك بنشاط.",
+      "حافظي على روتين يومي متوازن."
+    ]
+  }
+
+};
+
+
+// ============================
+// بدء الاختبار
+// ============================
+
+function startQuiz() {
+
+  currentQuestion = 0;
+
+  scores = {
+    vata: 0,
+    pitta: 0,
+    kapha: 0
+  };
+
+  document.getElementById("quizArea").classList.remove("hidden");
+  document.getElementById("resultArea").classList.add("hidden");
+
+  showQuestion();
+}
+
+
+// ============================
+// عرض السؤال
 // ============================
 
 function showQuestion() {
 
-  const questionElement =
-    document.getElementById("question") ||
-    document.getElementById("questionText");
+  const question = questions[currentQuestion];
 
-  const answersElement =
-    document.getElementById("answers") ||
-    document.getElementById("options");
-
-  const questionNumber =
-    document.getElementById("questionNumber") ||
-    document.getElementById("progressText");
-
-  if (!questionElement || !answersElement) {
-    console.error("لم يتم العثور على عناصر السؤال في الصفحة.");
+  if (!question) {
+    showResult();
     return;
   }
 
-  const question = questions[currentQuestion];
+  document.getElementById("questionNumber").textContent =
+    "السؤال " +
+    (currentQuestion + 1) +
+    " من " +
+    questions.length;
 
-  questionElement.textContent = question.q;
+  document.getElementById("question").textContent =
+    question.q;
 
-  answersElement.innerHTML = "";
+  const optionsContainer =
+    document.getElementById("options");
+
+  optionsContainer.innerHTML = "";
 
   question.options.forEach(function(option) {
 
-    const button = document.createElement("button");
+    const button =
+      document.createElement("button");
+
+    button.className = "option";
 
     button.textContent = option[0];
-
-    button.className = "answer";
 
     button.onclick = function() {
       chooseAnswer(option[1]);
     };
 
-    answersElement.appendChild(button);
+    optionsContainer.appendChild(button);
 
   });
 
-  if (questionNumber) {
+  const progress =
+    (currentQuestion / questions.length) * 100;
 
-    questionNumber.textContent =
-      "السؤال " +
-      (currentQuestion + 1) +
-      " من " +
-      questions.length;
-
-  }
-
-  updateProgress();
-
-}
-
-
-// ============================
-// شريط التقدم
-// ============================
-
-function updateProgress() {
-
-  const progressBar =
-    document.getElementById("progressBar") ||
-    document.querySelector(".progress-bar");
-
-  if (progressBar) {
-
-    const percent =
-      ((currentQuestion + 1) / questions.length) * 100;
-
-    progressBar.style.width = percent + "%";
-
-  }
-
+  document.getElementById("progress").style.width =
+    progress + "%";
 }
 
 
@@ -396,11 +478,9 @@ function updateProgress() {
 
 function chooseAnswer(type) {
 
-  if (!scores[type]) {
-    scores[type] = 0;
+  if (scores[type] !== undefined) {
+    scores[type]++;
   }
-
-  scores[type]++;
 
   currentQuestion++;
 
@@ -413,17 +493,14 @@ function chooseAnswer(type) {
     showResult();
 
   }
-
 }
 
 
 // ============================
-// عرض النتيجة
+// تحديد الدوشا
 // ============================
 
-function showResult() {
-
-  let resultType = "";
+function getResultType() {
 
   const maxScore =
     Math.max(
@@ -433,118 +510,128 @@ function showResult() {
     );
 
   if (scores.vata === maxScore) {
-    resultType = "vata";
+    return "vata";
   }
 
   if (scores.pitta === maxScore) {
-    resultType = "pitta";
+    return "pitta";
   }
 
-  if (scores.kapha === maxScore) {
-    resultType = "kapha";
-  }
+  return "kapha";
+}
 
 
-  const resultNames = {
+// ============================
+// عرض النتيجة
+// ============================
 
-    vata: "فاتا Vata 🌿",
+function showResult() {
 
-    pitta: "بيتا Pitta 🔥",
+  document.getElementById("quizArea")
+    .classList.add("hidden");
 
-    kapha: "كافا Kapha 🌱"
+  document.getElementById("resultArea")
+    .classList.remove("hidden");
 
+  document.getElementById("progress")
+    .style.width = "100%";
+
+  const resultType =
+    getResultType();
+
+  const data =
+    resultData[resultType];
+
+
+  // الصورة
+
+  const resultImage =
+    document.getElementById("resultImage");
+
+  resultImage.style.display = "block";
+
+  resultImage.src = data.image;
+
+  resultImage.alt = data.name;
+
+  resultImage.onerror = function() {
+    this.style.display = "none";
   };
 
 
-  const resultDescriptions = {
+  // الاسم
 
-    vata:
-      "تتميز فاتا بالحركة والخفة والنشاط. قد تحتاجين إلى روتين أكثر هدوءًا وانتظامًا وتغذية دافئة ومتوازنة.",
-
-    pitta:
-      "تتميز بيتا بالقوة والحيوية والتركيز. قد تستفيدين من الهدوء والتوازن وتجنب المبالغة في الحرارة والإجهاد.",
-
-    kapha:
-      "تتميز كافا بالثبات والهدوء والتحمل. قد تستفيدين من الحركة والنشاط وروتين يساعد على الحيوية."
-
-  };
+  document.getElementById("resultName")
+    .textContent = data.name;
 
 
-  const resultContainer =
-    document.getElementById("result") ||
-    document.getElementById("resultContainer");
+  // الوصف
+
+  document.getElementById("resultDescription")
+    .textContent = data.description;
 
 
-  if (!resultContainer) {
+  // الدرجات
 
-    console.error(
-      "لم يتم العثور على عنصر النتيجة في الصفحة."
-    );
-
-    return;
-
-  }
-
-
-  resultContainer.innerHTML = `
-
-    <div class="result-card">
-
-      <h1>🌿 نتيجتك</h1>
-
-      <h2>
-        ${resultNames[resultType]}
-      </h2>
-
-      <p>
-        ${resultDescriptions[resultType]}
-      </p>
-
-      <div class="scores">
-
-        <p>
-          فاتا:
-          <strong>${scores.vata}</strong>
-        </p>
-
-        <p>
-          بيتا:
-          <strong>${scores.pitta}</strong>
-        </p>
-
-        <p>
-          كافا:
-          <strong>${scores.kapha}</strong>
-        </p>
-
-      </div>
-
-      <button
-        onclick="restartQuiz()"
-        class="restart-btn"
-      >
-        إعادة الاختبار
-      </button>
-
-    </div>
-
-  `;
+  document.getElementById("scoreBox")
+    .innerHTML =
+      "🌿 فاتا: <strong>" + scores.vata +
+      "</strong> &nbsp; | &nbsp; " +
+      "🔥 بيتا: <strong>" + scores.pitta +
+      "</strong> &nbsp; | &nbsp; " +
+      "🌱 كافا: <strong>" + scores.kapha +
+      "</strong>";
 
 
-  const questionArea =
-    document.getElementById("quiz") ||
-    document.getElementById("quizContainer") ||
-    document.getElementById("app");
+  // الأطعمة
+
+  let foodHTML = "<ul>";
+
+  data.foods.forEach(function(food) {
+
+    foodHTML +=
+      "<li>" + food + "</li>";
+
+  });
+
+  foodHTML += "</ul>";
+
+  document.getElementById("foodContent")
+    .innerHTML = foodHTML;
 
 
-  if (questionArea) {
+  // اليوغا
 
-    questionArea.style.display = "none";
+  let yogaHTML = "<ul>";
 
-  }
+  data.yoga.forEach(function(yoga) {
+
+    yogaHTML +=
+      "<li>" + yoga + "</li>";
+
+  });
+
+  yogaHTML += "</ul>";
+
+  document.getElementById("yogaContent")
+    .innerHTML = yogaHTML;
 
 
-  resultContainer.style.display = "block";
+  // النصائح
+
+  let tipsHTML = "<ul>";
+
+  data.tips.forEach(function(tip) {
+
+    tipsHTML +=
+      "<li>" + tip + "</li>";
+
+  });
+
+  tipsHTML += "</ul>";
+
+  document.getElementById("tipsContent")
+    .innerHTML = tipsHTML;
 
 }
 
@@ -555,68 +642,25 @@ function showResult() {
 
 function restartQuiz() {
 
-  currentQuestion = 0;
+  startQuiz();
 
-  scores = {
-    vata: 0,
-    pitta: 0,
-    kapha: 0
-  };
-
-
-  const resultContainer =
-    document.getElementById("result") ||
-    document.getElementById("resultContainer");
-
-
-  if (resultContainer) {
-
-    resultContainer.innerHTML = "";
-
-    resultContainer.style.display = "none";
-
-  }
-
-
-  const questionArea =
-    document.getElementById("quiz") ||
-    document.getElementById("quizContainer") ||
-    document.getElementById("app");
-
-
-  if (questionArea) {
-
-    questionArea.style.display = "block";
-
-  }
-
-
-  showQuestion();
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
 }
 
 
 // ============================
-// بدء الاختبار
+// تشغيل الاختبار تلقائيًا
 // ============================
 
 document.addEventListener(
   "DOMContentLoaded",
   function() {
 
-    const resultContainer =
-      document.getElementById("result") ||
-      document.getElementById("resultContainer");
-
-
-    if (resultContainer) {
-
-      resultContainer.style.display = "none";
-
-    }
-
-
-    showQuestion();
+    startQuiz();
 
   }
 );
