@@ -317,7 +317,7 @@ const resultData = {
 
   vata: {
     name: "دوشا فاتا VATA",
-    image: "vata.png",
+    image: "Vata.png",
     description:
       "الهواء والأثير – الحركة والإبداع. تتميز فاتا بالحساسية والنشاط وسرعة التفكير والإبداع، وقد تميل إلى القلق والتشتت عند الإجهاد.",
     foods: [
@@ -344,7 +344,7 @@ const resultData = {
 
   pitta: {
     name: "دوشا بيتا PITTA",
-    image: "pitta.png",
+    image: "Pitta.png",
     description:
       "النار والماء – التحول والطاقة. تتميز بيتا بالذكاء والطموح والتنظيم والطاقة، وقد تميل إلى الغضب أو الانتقاد عند زيادة الضغط.",
     foods: [
@@ -371,7 +371,7 @@ const resultData = {
 
   kapha: {
     name: "دوشا كافا KAPHA",
-    image: "kapha.png",
+    image: "Kapha.png",
     description:
       "الأرض والماء – الثبات والبناء. تتميز كافا بالهدوء والصبر والثبات والحب، وقد تميل إلى الكسل أو التعلق عند قلة الحركة.",
     foods: [
