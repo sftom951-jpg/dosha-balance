@@ -8,6 +8,7 @@
   <title>Dosha Balance - اختبار الدوشا</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -46,6 +47,10 @@
       margin-bottom: 25px;
     }
 
+    /* =========================
+       شريط التقدم
+    ========================= */
+
     .progress-container {
       width: 100%;
       height: 9px;
@@ -70,6 +75,10 @@
       margin: 12px 0 18px;
     }
 
+    /* =========================
+       السؤال
+    ========================= */
+
     .question {
       font-size: 22px;
       font-weight: bold;
@@ -77,6 +86,10 @@
       text-align: center;
       margin-bottom: 25px;
     }
+
+    /* =========================
+       خيارات الإجابة
+    ========================= */
 
     .option {
       display: block;
@@ -91,6 +104,7 @@
       font-size: 17px;
       cursor: pointer;
       transition: 0.2s;
+      text-align: center;
     }
 
     .option:hover {
@@ -102,11 +116,17 @@
       transform: scale(0.98);
     }
 
+    /* =========================
+       إخفاء العناصر
+    ========================= */
+
     .hidden {
       display: none !important;
     }
 
-    /* النتيجة */
+    /* =========================
+       النتيجة
+    ========================= */
 
     .result {
       text-align: center;
@@ -140,6 +160,10 @@
       color: #555;
       margin-bottom: 25px;
     }
+
+    /* =========================
+       الأقسام
+    ========================= */
 
     .section {
       margin: 22px 0;
@@ -176,6 +200,10 @@
       line-height: 1.7;
     }
 
+    /* =========================
+       قسم الإحماء
+    ========================= */
+
     .warmup {
       background: #FFF8E8;
       border: 1px solid #E7D8AA;
@@ -184,6 +212,10 @@
     .warmup .section-title {
       background: #9A7A35;
     }
+
+    /* =========================
+       زر إعادة الاختبار
+    ========================= */
 
     .restart {
       border: none;
@@ -201,6 +233,10 @@
       opacity: 0.9;
     }
 
+    /* =========================
+       الدرجات
+    ========================= */
+
     .score-box {
       margin: 20px 0;
       padding: 15px;
@@ -208,7 +244,12 @@
       background: #F4F8F3;
       font-size: 15px;
       line-height: 2;
+      text-align: center;
     }
+
+    /* =========================
+       الجوال
+    ========================= */
 
     @media (max-width: 500px) {
 
@@ -242,8 +283,11 @@
       .section {
         padding: 16px;
       }
+
     }
+
   </style>
+
 </head>
 
 
@@ -251,7 +295,10 @@
 
   <div class="card">
 
-    <!-- عنوان الموقع -->
+    <!-- =========================
+         عنوان الموقع
+    ========================== -->
+
     <div class="logo">
       🌿 Dosha Balance
     </div>
@@ -261,32 +308,63 @@
     </div>
 
 
-    <!-- ==================== الاختبار ==================== -->
+    <!-- =========================
+         الاختبار
+    ========================== -->
 
     <div id="quizArea">
 
+      <!-- شريط التقدم -->
+
       <div class="progress-container">
-        <div id="progress" class="progress"></div>
+
+        <div
+          id="progress"
+          class="progress">
+        </div>
+
       </div>
 
-      <div id="questionNumber" class="question-number"></div>
 
-      <div id="question" class="question"></div>
+      <!-- رقم السؤال -->
+
+      <div
+        id="questionNumber"
+        class="question-number">
+      </div>
+
+
+      <!-- السؤال -->
+
+      <div
+        id="question"
+        class="question">
+      </div>
+
+
+      <!-- الإجابات -->
 
       <div id="options"></div>
 
     </div>
 
 
-    <!-- ==================== النتيجة ==================== -->
+    <!-- =========================
+         النتيجة
+    ========================== -->
 
-    <div id="resultArea" class="result hidden">
+    <div
+      id="resultArea"
+      class="result hidden">
+
 
       <h2 class="result-title">
-        نتيجتك
+        🌿 نتيجتك
       </h2>
 
+
       <!-- صورة الدوشا -->
+
       <img
         id="resultImage"
         class="result-image"
@@ -294,16 +372,37 @@
         alt="نتيجة الدوشا"
       >
 
-      <div id="resultName" class="result-name"></div>
 
-      <div id="resultDescription" class="result-description"></div>
+      <!-- اسم الدوشا -->
+
+      <div
+        id="resultName"
+        class="result-name">
+      </div>
 
 
-      <!-- الدرجات -->
-      <div id="scoreBox" class="score-box"></div>
+      <!-- وصف الدوشا -->
+
+      <div
+        id="resultDescription"
+        class="result-description">
+      </div>
 
 
-      <!-- الأطعمة -->
+      <!-- =========================
+           الدرجات
+      ========================== -->
+
+      <div
+        id="scoreBox"
+        class="score-box">
+      </div>
+
+
+      <!-- =========================
+           الأطعمة
+      ========================== -->
+
       <div class="section">
 
         <div class="section-title">
@@ -315,7 +414,10 @@
       </div>
 
 
-      <!-- الإحماء -->
+      <!-- =========================
+           الإحماء
+      ========================== -->
+
       <div class="section warmup">
 
         <div class="section-title">
@@ -323,21 +425,29 @@
         </div>
 
         <p>
+
           قبل البدء بتمارين اليوغا، خصصي من
           <strong>5 إلى 10 دقائق للإحماء</strong>.
-          ابدئي بحركات لطيفة للمفاصل وتمدد خفيف مع التنفس،
-          ثم انتقلي تدريجيًا إلى وضعيات اليوغا.
+
+          ابدئي بحركات لطيفة للمفاصل وتمدد خفيف
+          مع التنفس، ثم انتقلي تدريجيًا إلى وضعيات اليوغا.
+
         </p>
 
         <p>
+
           الهدف هو تجهيز الجسم للحركة وتجنب الإجهاد،
           مع التوقف إذا شعرتِ بألم أو انزعاج غير معتاد.
+
         </p>
 
       </div>
 
 
-      <!-- اليوغا -->
+      <!-- =========================
+           اليوغا
+      ========================== -->
+
       <div class="section">
 
         <div class="section-title">
@@ -349,7 +459,10 @@
       </div>
 
 
-      <!-- النصائح -->
+      <!-- =========================
+           النصائح
+      ========================== -->
+
       <div class="section">
 
         <div class="section-title">
@@ -361,8 +474,16 @@
       </div>
 
 
-      <button class="restart" onclick="restartQuiz()">
+      <!-- =========================
+           إعادة الاختبار
+      ========================== -->
+
+      <button
+        class="restart"
+        onclick="restartQuiz()">
+
         إعادة الاختبار
+
       </button>
 
     </div>
@@ -370,445 +491,11 @@
   </div>
 
 
-  <!-- ==================== الأسئلة ==================== -->
+  <!-- =========================
+       ملف JavaScript الرئيسي
+  ========================== -->
 
   <script src="script.js"></script>
-
-
-  <!-- ==================== تشغيل الاختبار ==================== -->
-
-  <script>
-
-    let quizIndex = 0;
-
-    let quizScores = {
-      vata: 0,
-      pitta: 0,
-      kapha: 0
-    };
-
-
-    function startQuiz() {
-
-      quizIndex = 0;
-
-      quizScores = {
-        vata: 0,
-        pitta: 0,
-        kapha: 0
-      };
-
-      document
-        .getElementById("quizArea")
-        .classList.remove("hidden");
-
-      document
-        .getElementById("resultArea")
-        .classList.add("hidden");
-
-      showQuestion();
-    }
-
-
-    function showQuestion() {
-
-      if (typeof questions === "undefined") {
-
-        document.getElementById("question").innerHTML =
-          "حدث خطأ في تحميل الأسئلة.<br><br>" +
-          "تأكدي من وجود ملف script.js في نفس المجلد.";
-
-        return;
-      }
-
-
-      if (quizIndex >= questions.length) {
-
-        showResult();
-
-        return;
-      }
-
-
-      const currentQuestionData =
-        questions[quizIndex];
-
-
-      document
-        .getElementById("questionNumber")
-        .textContent =
-        "السؤال " +
-        (quizIndex + 1) +
-        " من " +
-        questions.length;
-
-
-      document
-        .getElementById("question")
-        .textContent =
-        currentQuestionData.q;
-
-
-      const optionsContainer =
-        document.getElementById("options");
-
-
-      optionsContainer.innerHTML = "";
-
-
-      currentQuestionData.options.forEach(function(option) {
-
-        const button =
-          document.createElement("button");
-
-
-        button.className = "option";
-
-
-        button.textContent =
-          option[0];
-
-
-        button.onclick = function() {
-
-          chooseAnswer(option[1]);
-
-        };
-
-
-        optionsContainer.appendChild(button);
-
-      });
-
-
-      const progress =
-        (quizIndex / questions.length) * 100;
-
-
-      document
-        .getElementById("progress")
-        .style.width =
-        progress + "%";
-    }
-
-
-    function chooseAnswer(type) {
-
-      if (type === "vata") {
-        quizScores.vata++;
-      }
-
-      if (type === "pitta") {
-        quizScores.pitta++;
-      }
-
-      if (type === "kapha") {
-        quizScores.kapha++;
-      }
-
-
-      quizIndex++;
-
-      showQuestion();
-    }
-
-
-    function getResultType() {
-
-      if (
-        quizScores.vata >= quizScores.pitta &&
-        quizScores.vata >= quizScores.kapha
-      ) {
-
-        return "vata";
-
-      }
-
-
-      if (
-        quizScores.pitta >= quizScores.vata &&
-        quizScores.pitta >= quizScores.kapha
-      ) {
-
-        return "pitta";
-
-      }
-
-
-      return "kapha";
-    }
-
-
-    function showResult() {
-
-      document
-        .getElementById("quizArea")
-        .classList.add("hidden");
-
-
-      document
-        .getElementById("resultArea")
-        .classList.remove("hidden");
-
-
-      document
-        .getElementById("progress")
-        .style.width = "100%";
-
-
-      const resultType =
-        getResultType();
-
-
-      const resultData = {
-
-        vata: {
-
-          name: "دوشا فاتا VATA",
-
-          image: "vata.png",
-
-          description:
-            "الهواء والأثير – الحركة والإبداع. " +
-            "تتميز فاتا بالحساسية والنشاط وسرعة التفكير والإبداع، " +
-            وقد تميل إلى القلق والتشتت عند الإجهاد.",
-
-          foods: [
-            "شوفان دافئ",
-            "بطاطا حلوة",
-            "حساء العدس",
-            "لوز منقوع",
-            "زيت السمسم",
-            "مشروبات دافئة مثل الزنجبيل والقرفة"
-          ],
-
-          yoga: [
-            "وضعية الطفل – تساعد على الاسترخاء وتهدئة العقل.",
-            "الانحناء الأمامي – يساعد على الهدوء وتخفيف التوتر.",
-            "وضعية الساقين على الحائط – وضعية مريحة للاسترخاء."
-          ],
-
-          tips: [
-            "حافظي على روتين يومي منتظم.",
-            "تناولي وجبات دافئة ومطبوخة.",
-            "تجنبي البرد والرياح والسهر الطويل.",
-            "مارسي التنفس الهادئ والتأمل يوميًا.",
-            "امنحي نفسك وقتًا كافيًا للراحة."
-          ]
-
-        },
-
-
-        pitta: {
-
-          name: "دوشا بيتا PITTA",
-
-          image: "pitta.png",
-
-          description:
-            "النار والماء – التحول والطاقة. " +
-            "تتميز بيتا بالذكاء والطموح والتنظيم والطاقة، " +
-            وقد تميل إلى الغضب أو الانتقاد عند زيادة الضغط.",
-
-          foods: [
-            "خيار",
-            "بطيخ",
-            "كزبرة",
-            "أرز بسمتي",
-            "شاي النعناع",
-            "أطعمة خفيفة ومنعشة"
-          ],
-
-          yoga: [
-            "وضعية التبريد – تساعد على الهدوء والاسترخاء.",
-            "الانحناء الجانبي – يساعد على المرونة والتنفس.",
-            "وضعية الجمل – تمرين لطيف مع التركيز على التنفس."
-          ],
-
-          tips: [
-            "تجنبي الحر الزائد والحرارة الشديدة.",
-            "تناولي أطعمة باردة ومنعشة باعتدال.",
-            "خصصي وقتًا للاسترخاء والطبيعة.",
-            "تمرني بلطف وتجنبي الإفراط.",
-            "حافظي على التوازن بين العمل والراحة."
-          ]
-
-        },
-
-
-        kapha: {
-
-          name: "دوشا كافا KAPHA",
-
-          image: "kapha.png",
-
-          description:
-            "الأرض والماء – الثبات والبناء. " +
-            "تتميز كافا بالهدوء والصبر والثبات والحب، " +
-            وقد تميل إلى الكسل أو التعلق عند قلة الحركة.",
-
-          foods: [
-            "زنجبيل",
-            "تفاح",
-            "كينوا أو شوفان",
-            "خضار ورقية",
-            "شاي أخضر",
-            "أطعمة خفيفة ومتنوعة"
-          ],
-
-          yoga: [
-            "وضعية المحارب – تنشط الجسم وتزيد الحيوية.",
-            "وضعية القارب – تقوي عضلات البطن وتحفز النشاط.",
-            "الانحناء للأمام من الجلوس – يساعد على الاسترخاء.",
-            "يمكن إضافة حركات نشطة مناسبة لمستوى لياقتك."
-          ],
-
-          tips: [
-            "تحركي يوميًا وشاركي في أنشطة نشطة.",
-            "تناولي وجبات خفيفة ودافئة.",
-            "تجنبي النوم الزائد والسكريات بكثرة.",
-            "حافظي على مساحة خفيفة ومرتبة حولك.",
-            "ابدئي يومك مبكرًا وحافظي على النشاط."
-          ]
-
-        }
-
-      };
-
-
-      const data =
-        resultData[resultType];
-
-
-      /* الصورة */
-
-      const resultImage =
-        document.getElementById("resultImage");
-
-
-      resultImage.src =
-        data.image;
-
-
-      resultImage.alt =
-        data.name;
-
-
-      resultImage.onerror =
-        function() {
-
-          this.style.display = "none";
-
-        };
-
-
-      /* الاسم */
-
-      document
-        .getElementById("resultName")
-        .textContent =
-        data.name;
-
-
-      /* الوصف */
-
-      document
-        .getElementById("resultDescription")
-        .textContent =
-        data.description;
-
-
-      /* الدرجات */
-
-      document
-        .getElementById("scoreBox")
-        .innerHTML =
-        "فاتا: " + quizScores.vata +
-        " &nbsp; | &nbsp; " +
-        "بيتا: " + quizScores.pitta +
-        " &nbsp; | &nbsp; " +
-        "كافا: " + quizScores.kapha;
-
-
-      /* الأطعمة */
-
-      let foodHTML = "<ul>";
-
-      data.foods.forEach(function(food) {
-
-        foodHTML +=
-          "<li>" + food + "</li>";
-
-      });
-
-      foodHTML += "</ul>";
-
-
-      document
-        .getElementById("foodContent")
-        .innerHTML =
-        foodHTML;
-
-
-      /* اليوغا */
-
-      let yogaHTML = "<ul>";
-
-      data.yoga.forEach(function(yoga) {
-
-        yogaHTML +=
-          "<li>" + yoga + "</li>";
-
-      });
-
-      yogaHTML += "</ul>";
-
-
-      document
-        .getElementById("yogaContent")
-        .innerHTML =
-        yogaHTML;
-
-
-      /* النصائح */
-
-      let tipsHTML = "<ul>";
-
-      data.tips.forEach(function(tip) {
-
-        tipsHTML +=
-          "<li>" + tip + "</li>";
-
-      });
-
-      tipsHTML += "</ul>";
-
-
-      document
-        .getElementById("tipsContent")
-        .innerHTML =
-        tipsHTML;
-
-    }
-
-
-    function restartQuiz() {
-
-      startQuiz();
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-    }
-
-
-    /* تشغيل الاختبار عند فتح الصفحة */
-
-    startQuiz();
-
-  </script>
 
 </body>
 
