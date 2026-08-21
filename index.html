@@ -8,17 +8,21 @@
   <title>Dosha Balance</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: Tahoma, Arial, sans-serif;
-      background: #F8F5EE;
-      color: #294537;
       min-height: 100vh;
       padding: 20px;
+
+      background: #F8F5EE;
+      color: #294537;
+
+      font-family: Tahoma, Arial, sans-serif;
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -26,89 +30,214 @@
 
     .card {
       width: 100%;
-      max-width: 620px;
+      max-width: 650px;
+
       background: white;
+
       border-radius: 30px;
+
       padding: 45px 25px;
+
       text-align: center;
-      box-shadow: 0 8px 30px rgba(0,0,0,.08);
+
+      box-shadow:
+        0 8px 30px rgba(0,0,0,.08);
     }
 
     .logo {
       font-size: 42px;
-      margin-bottom: 15px;
+      margin-bottom: 8px;
     }
 
     h1 {
       color: #5D8A63;
+
       font-size: 34px;
-      margin-bottom: 12px;
+
+      margin: 0 0 10px;
     }
 
     h2 {
-      font-size: 20px;
+      color: #52665A;
+
+      font-size: 19px;
+
       font-weight: normal;
+
+      margin: 0 0 25px;
+    }
+
+    .intro {
+      color: #555;
+
+      font-size: 17px;
+
+      line-height: 2;
+
       margin-bottom: 25px;
     }
 
-    p {
-      line-height: 1.9;
-      font-size: 17px;
+    .features {
+
+      background: #F8F5EE;
+
+      border-radius: 22px;
+
+      padding: 18px 20px;
+
+      margin-bottom: 28px;
+
+      text-align: right;
+    }
+
+    .features p {
+
+      margin: 9px 0;
+
       color: #52665A;
-      margin-bottom: 30px;
+
+      font-size: 16px;
+
+      line-height: 1.7;
     }
 
     .start-button {
+
+      display: inline-block;
+
       border: none;
+
       border-radius: 30px;
+
       padding: 16px 38px;
+
       background: #5D8A63;
+
       color: white;
+
       font-size: 18px;
+
       font-family: inherit;
+
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(93,138,99,.25);
+
+      text-decoration: none;
+
+      box-shadow:
+        0 5px 15px rgba(93,138,99,.25);
+
+      transition: .2s;
     }
 
     .start-button:hover {
+
       opacity: .9;
+
       transform: scale(1.02);
     }
 
     .note {
-      margin-top: 25px;
+
+      margin-top: 22px;
+
       font-size: 13px;
+
       color: #87958B;
     }
+
+    @media (max-width: 500px) {
+
+      body {
+        padding: 10px;
+      }
+
+      .card {
+        padding: 35px 18px;
+        border-radius: 25px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      h2 {
+        font-size: 17px;
+      }
+
+      .intro {
+        font-size: 16px;
+      }
+
+      .start-button {
+        width: 100%;
+      }
+
+    }
+
   </style>
+
 </head>
 
 <body>
 
   <div class="card">
 
-    <div class="logo">🌿</div>
+    <div class="logo">
+      🌿
+    </div>
 
-    <h1>Dosha Balance</h1>
+    <h1>
+      Dosha Balance
+    </h1>
 
-    <h2>اكتشفي توازنك الداخلي</h2>
+    <h2>
+      اكتشفي طبيعتك التكوينية
+    </h2>
 
-    <p>
-      اختبار بسيط يساعدك على التعرف على طبيعة الدوشا
-      لديك، واكتشاف نصائح مناسبة للغذاء واليوغا ونمط الحياة.
-    </p>
+    <div class="intro">
 
-    <button
-      class="start-button"
-      onclick="location.href='quiz.html'">
+      اختبار بسيط يساعدكِ على التعرف على الدوشا
+      الأقرب إلى طبيعتك، واكتشاف نصائح مناسبة
+      للغذاء واليوغا ونمط الحياة.
+
+    </div>
+
+    <div class="features">
+
+      <p>
+        ✨ اختبار مكوّن من 32 سؤالًا
+      </p>
+
+      <p>
+        🌿 اكتشاف الدوشا الأقرب إليكِ
+      </p>
+
+      <p>
+        🍽️ اقتراحات غذائية مناسبة
+      </p>
+
+      <p>
+        🧘 تمارين يوغا ونصائح يومية
+      </p>
+
+    </div>
+
+    <a
+      href="quiz.html"
+      class="start-button">
+
       ابدئي اختبار الدوشا ✨
-    </button>
+
+    </a>
 
     <div class="note">
+
       خذي الاختبار بهدوء واختاري الإجابة الأقرب إليكِ 🌸
+
     </div>
 
   </div>
 
 </body>
+
 </html>
