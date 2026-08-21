@@ -343,8 +343,8 @@ const resultData = {
   },
 
   pitta: {
-    name: "دوشا بيتا PITTA",
-    image: "Pitta.png",
+  name: "دوشا بيتا PITTA",
+  image: "https://raw.githubusercontent.com/sftom951-jpg/dosha-balance/refs/heads/main/Pitta.png",
     description:
       "النار والماء – التحول والطاقة. تتميز بيتا بالذكاء والطموح والتنظيم والطاقة، وقد تميل إلى الغضب أو الانتقاد عند زيادة الضغط.",
     foods: [
@@ -370,8 +370,8 @@ const resultData = {
   },
 
   kapha: {
-    name: "دوشا كافا KAPHA",
-    image: "Kapha.png",
+  name: "دوشا كافا KAPHA",
+  image: "https://raw.githubusercontent.com/sftom951-jpg/dosha-balance/refs/heads/main/Kapha.png",
     description:
       "الأرض والماء – الثبات والبناء. تتميز كافا بالهدوء والصبر والثبات والحب، وقد تميل إلى الكسل أو التعلق عند قلة الحركة.",
     foods: [
