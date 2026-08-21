@@ -371,7 +371,7 @@ const resultData = {
 
   kapha: {
   name: "دوشا كافا KAPHA",
-  image: "https://raw.githubusercontent.com/sftom951-jpg/dosha-balance/refs/heads/main/Kapha.png",
+image: "https://raw.githubusercontent.com/sftom951-jpg/dosha-balance/refs/heads/main/Kapha%20.png",د
     description:
       "الأرض والماء – الثبات والبناء. تتميز كافا بالهدوء والصبر والثبات والحب، وقد تميل إلى الكسل أو التعلق عند قلة الحركة.",
     foods: [
