@@ -316,8 +316,8 @@ const questions = [
 const resultData = {
 
   vata: {
-    name: "دوشا فاتا VATA",
-    image: "Vata.png",
+  name: "دوشا فاتا VATA",
+  image: "https://raw.githubusercontent.com/sftom951-jpg/dosha-balance/refs/heads/main/Vata.png",
     description:
       "الهواء والأثير – الحركة والإبداع. تتميز فاتا بالحساسية والنشاط وسرعة التفكير والإبداع، وقد تميل إلى القلق والتشتت عند الإجهاد.",
     foods: [
